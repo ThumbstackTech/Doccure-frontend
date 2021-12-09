@@ -31,7 +31,7 @@ export const useRegisterDoctor = () => {
 };
 
 export const useVerifyDoctor = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const verify = async (data) => {
     try {
@@ -49,7 +49,7 @@ export const useVerifyDoctor = () => {
 };
 
 export const useSendOtp = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const sendOtp = async (data) => {
     try {

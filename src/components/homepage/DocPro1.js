@@ -4,7 +4,7 @@ import SignupPageFooter from "../forms/SignupPageFooter";
 import SignupPageHeader from "../forms/SignupPageHeader";
 import { useSelector } from "react-redux";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
@@ -13,10 +13,10 @@ import {
   useCreateAppointments,
   useConsultedAppointment,
 } from "../../hooks/doctor";
-import { setToken } from "../../actions/setToken";
+// import { setToken } from "../../actions/setToken";
 
 export const DocPro1 = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { doctorId } = useParams();
   const navigate = useNavigate();
   const doctorById = useDoctorDetails();
@@ -30,12 +30,12 @@ export const DocPro1 = () => {
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
   );
-  let current =
-    appointments.length - 3 > appointments.length
-      ? appointments.length - 1 > appointments.length
-        ? appointments.length - 1
-        : appointments.length
-      : appointments.length;
+  // let current =
+  //   appointments.length - 3 > appointments.length
+  //     ? appointments.length - 1 > appointments.length
+  //       ? appointments.length - 1
+  //       : appointments.length
+  //     : appointments.length;
 
   console.log("individual doc appointments", appointments);
   console.log("doc consulted appointments", consultedappointments);
@@ -44,7 +44,7 @@ export const DocPro1 = () => {
   useEffect(() => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     if (onlineUser) {
-      onlineUser = onlineUser;
+      // onlineUser = onlineUser;
       setuser(onlineUser);
     } else {
       onlineUser = "";
@@ -54,7 +54,7 @@ export const DocPro1 = () => {
   }, [doctorId]);
 
   const fetchDoctor = async () => {
-    let data = doctorId;
+    // let data = doctorId;
     // let date = Date();
     let today = new Date(),
       date =
@@ -118,7 +118,7 @@ export const DocPro1 = () => {
                       <img
                         src="/assets/img/doctors/doctor-08.jpg"
                         className="img-fluid"
-                        alt="User Image"
+                        alt="User pucture"
                       />
                     </div>
                     <div className="doc-info-cont">
@@ -135,7 +135,7 @@ export const DocPro1 = () => {
                           className="doc-location"
                         >
                           <i className="feather-map-pin" /> Mumbai -{" "}
-                          <a href="javascript:void(0);">Get Directions</a>
+                          <a href="/">Get Directions</a>
                         </p>
                       </div>
                     </div>

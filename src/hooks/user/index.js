@@ -25,7 +25,7 @@ export const useRegisterUser = () => {
 };
 
 export const useVerifyUser = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const verify = async (data) => {
     try {
@@ -42,7 +42,7 @@ export const useVerifyUser = () => {
   return verify;
 };
 export const useSendOtp = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const sendOtp = async (data) => {
     try {

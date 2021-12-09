@@ -66,7 +66,7 @@ export const DocRegister = () => {
                   <div className="row align-items-center justify-content-center">
                     <div className="col-md-7 col-lg-6 login-left">
                       <img
-                        src="assets/img/login-banner.png"
+                        src="/assets/img/login-banner.png"
                         className="img-fluid"
                         alt="Login Banner"
                       />

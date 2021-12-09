@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 import DocSection from "./DocSection";
 import { useSelector } from "react-redux";
-import { setDoctorByLoc } from "../../actions/setDoctorByLoc";
+// import { setDoctorByLoc } from "../../actions/setDoctorByLoc";
 
 export const SearchDoc = ({ getLocation }) => {
-  const [searchDoc, getSearchDoc] = useState("");
-  const [doctorDetails, setDoctorDetails] = useState([]);
+  // const [searchDoc, getSearchDoc] = useState("");
+  // const [doctorDetails, setDoctorDetails] = useState([]);
   const doctorbyloc = useSelector((state) => state.setDoctorByLoc);
   console.log("doc by location ", doctorbyloc);
   // let doctorDetails;

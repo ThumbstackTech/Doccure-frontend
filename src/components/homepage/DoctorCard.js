@@ -28,12 +28,12 @@ export const DoctorCard = ({ doctor }) => {
             <a href="doctor-profile.html">
               <img
                 className="img-fluid"
-                alt="User Image"
-                src="assets/img/doctors/doctor-08.jpg"
+                alt="no"
+                src="/assets/img/doctors/doctor-08.jpg"
               />
             </a>
             <a
-              // href="javascript:void(0)"
+              href="/"
               onClick={() => addBookmark(doctor.doctorId, !bookmark)}
               // className="fav-btn"
               className={!bookmark ? "fav-btn" : "fav-btn active"}

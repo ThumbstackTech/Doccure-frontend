@@ -1,7 +1,7 @@
-let data = "";
-if (localStorage.getItem("doccure-token")) {
-  data = localStorage.getItem("doccure-token");
-}
+// let data = "";
+// if (localStorage.getItem("doccure-token")) {
+//   data = localStorage.getItem("doccure-token");
+// }
 
 const setToken = (state = "", action) => {
   switch (action.type) {

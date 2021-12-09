@@ -17,22 +17,22 @@ export const SignupPageFooter = () => {
                     <div className="social-icon">
                       <ul>
                         <li>
-                          <a href="#" target="_blank">
+                          <a href="/" target="_blank">
                             <i className="feather-facebook" />
                           </a>
                         </li>
                         <li>
-                          <a href="#" target="_blank">
+                          <a href="/" target="_blank">
                             <i className="feather-instagram" />
                           </a>
                         </li>
                         <li>
-                          <a href="#" target="_blank">
+                          <a href="/" target="_blank">
                             <i className="feather-linkedin" />
                           </a>
                         </li>
                         <li>
-                          <a href="#" target="_blank">
+                          <a href="/" target="_blank">
                             <i className="feather-twitter" />
                           </a>
                         </li>

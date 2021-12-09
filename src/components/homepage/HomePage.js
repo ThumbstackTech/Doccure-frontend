@@ -9,16 +9,16 @@ export const HomePage = () => {
   useEffect(() => {
     onSearch();
   }, []);
-  let details;
+  // let details;
   const onSearch = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log(position.coords.latitude, "latitude");
       console.log(position.coords.longitude, "longitude");
 
-      var data = {
-        lalitude: 18.975,
-        longitude: 72.8258,
-      };
+      // var data = {
+      //   lalitude: 18.975,
+      //   longitude: 72.8258,
+      // };
 
       // axios
       //   .post(

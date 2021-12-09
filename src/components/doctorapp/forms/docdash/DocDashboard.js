@@ -35,7 +35,7 @@ export const DocDashboard = () => {
   console.log("doctor consulted", consultedappointments);
   useEffect(() => {
     fetchDoctor();
-  }, []);
+  }, [appointments]);
 
   const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
@@ -109,7 +109,7 @@ export const DocDashboard = () => {
                       <a href="doctor-profile.html" className="booking-doc-img">
                         <img
                           src="assets/img/doctors/doctor-thumb-02.jpg"
-                          alt="User Image"
+                          alt="no"
                         />
                       </a>
                       <div className="profile-det-info">

@@ -1,61 +1,61 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DocFooter from "../doctorapp/forms/DocFooter";
 import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import {
-  useDoctorDetails,
-  useDoctorAppointments,
-  useConsultedAppointment,
-} from "../../hooks/doctor";
+// import {
+//   useDoctorDetails,
+//   useDoctorAppointments,
+//   // useConsultedAppointment,
+// } from "../../hooks/doctor";
 
 export const TokenBooking = () => {
-  const doctorById = useDoctorDetails();
-  const doctorAppointment = useDoctorAppointments();
-  const consultedAppointment = useConsultedAppointment();
+  // const doctorById = useDoctorDetails();
+  // const doctorAppointment = useDoctorAppoin+*-tments();
+  // const consultedAppointment = useConsultedAppointment();
   const doctor = useSelector((state) => state.setDoctor);
   // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
   );
-  let current =
-    appointments.length - 3 > appointments.length
-      ? appointments.length - 1 > appointments.length
-        ? appointments.length - 1
-        : appointments.length
-      : appointments.length - 1;
+  // let current =
+  //   appointments.length - 3 > appointments.length
+  //     ? appointments.length - 1 > appointments.length
+  //       ? appointments.length - 1
+  //       : appointments.length
+  //     : appointments.length - 1;
 
   console.log("token appointments", appointments);
   console.log("token doctor", doctor);
   // useEffect(() => {
   //   fetchDoctor();
   // }, []);
-  const fetchDoctor = async () => {
-    let onlineUser = JSON.parse(localStorage.getItem("user"));
-    if (onlineUser) {
-      onlineUser = onlineUser;
-      // setuser(onlineUser);
-    } else {
-      onlineUser = "";
-      // setuser(onlineUser);
-    }
-    let doctorId = onlineUser.doctorId;
-    let data = doctorId;
-    // let date = Date();
-    let today = new Date(),
-      date =
-        today.getFullYear() +
-        "-" +
-        (today.getMonth() + 1) +
-        "-" +
-        today.getDate();
-    console.log("today", date);
-    await doctorById({ doctorId });
-    await doctorAppointment({ doctorId, date });
-    // await consultedAppointment({ doctorId, date });
-  };
+  // const fetchDoctor = async () => {
+  //   let onlineUser = JSON.parse(localStorage.getItem("user"));
+  //   if (onlineUser) {
+  //     onlineUser = onlineUser;
+  //     // setuser(onlineUser);
+  //   } else {
+  //     onlineUser = "";
+  //     // setuser(onlineUser);
+  //   }
+  //   let doctorId = onlineUser.doctorId;
+  //   let data = doctorId;
+  //   // let date = Date();
+  //   let today = new Date(),
+  //     date =
+  //       today.getFullYear() +
+  //       "-" +
+  //       (today.getMonth() + 1) +
+  //       "-" +
+  //       today.getDate();
+  //   console.log("today", date);
+  //   await doctorById({ doctorId });
+  //   await doctorAppointment({ doctorId, date });
+  //   // await consultedAppointment({ doctorId, date });
+  // };
 
   return (
     <>
