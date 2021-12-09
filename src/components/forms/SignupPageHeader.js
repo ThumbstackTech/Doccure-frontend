@@ -91,7 +91,7 @@ export const SignupPageHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" onClick={logout}>
+                <Link to="/signupPage" onClick={logout}>
                   <i className="fas fa-plus"> </i>
                   Logout
                 </Link>

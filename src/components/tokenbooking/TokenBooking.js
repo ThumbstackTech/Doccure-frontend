@@ -4,6 +4,7 @@ import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import SignupPageFooter from "../forms/SignupPageFooter";
 // import {
 //   useDoctorDetails,
 //   useDoctorAppointments,
@@ -197,8 +198,8 @@ export const TokenBooking = () => {
             </div>
           </div>
         </div>
-
-        <DocFooter />
+        <SignupPageFooter />
+        {/* <DocFooter /> */}
       </div>
     </>
   );
