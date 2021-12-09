@@ -1,5 +1,5 @@
 import React from "react";
-import DocFooter from "../doctorapp/forms/DocFooter";
+// import DocFooter from "../doctorapp/forms/DocFooter";
 import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
