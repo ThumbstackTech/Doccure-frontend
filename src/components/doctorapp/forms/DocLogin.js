@@ -52,8 +52,8 @@ export const DocLogin = () => {
     setShowOtp(!showOtp);
   };
 
-  const verifyOtp = async (event) => {
-    event.preventDefault();
+  const verifyOtp = async () => {
+    // event.preventDefault();
     console.log("phone number", phone);
     console.log("otp", otp);
 

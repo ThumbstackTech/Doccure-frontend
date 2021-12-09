@@ -6,15 +6,15 @@ export const DocHeader = () => {
   console.log("user details", user);
 
   useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     if (onlineUser) {
       onlineUser = onlineUser.name;
       setuser(onlineUser);
-    } else {
-      onlineUser = "";
-      setuser(onlineUser);
     }
-  }, []);
+  };
   return (
     <>
       <header className="header">
