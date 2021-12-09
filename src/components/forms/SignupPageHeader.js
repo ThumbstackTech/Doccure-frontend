@@ -91,7 +91,7 @@ export const SignupPageHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/signupPage" onClick={logout}>
+                <Link to="/signuppage" onClick={logout}>
                   <i className="fas fa-plus"> </i>
                   Logout
                 </Link>
@@ -103,7 +103,7 @@ export const SignupPageHeader = () => {
           ) : (
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
-                <Link className="nav-link header-login" to="/signupPage">
+                <Link className="nav-link header-login" to="/signuppage">
                   Login
                 </Link>
               </li>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DocFooter from "./DocFooter";
+// import DocFooter from "./DocFooter";
 import DocHeader from "./DocHeader";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useSendOtp, useVerifyDoctor } from "../../../hooks/doctor";
 
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../actions/setUser";
+import SignupPageFooter from "../../forms/SignupPageFooter";
 
 // import { setToken } from "../../../actions/setToken";
 
@@ -98,7 +99,7 @@ export const DocLogin = () => {
                         <div className="form-group">
                           <label>Phone Number</label>
                           <input
-                            type="number"
+                            type="tel"
                             name="phone"
                             id="phone"
                             className="form-control"
@@ -114,7 +115,7 @@ export const DocLogin = () => {
                           >
                             <label>OTP</label>
                             <input
-                              type="number"
+                              type="text"
                               className="form-control"
                               value={otp}
                               maxlength="6"
@@ -209,8 +210,9 @@ export const DocLogin = () => {
             </div>
           </div>
         </div>
-
-        <DocFooter />
+        <SignupPageFooter />
+        {/* <DocFooter />
+         */}
       </div>
     </>
   );
