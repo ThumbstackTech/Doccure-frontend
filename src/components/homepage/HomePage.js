@@ -7,7 +7,7 @@ import { SignupPageHeader } from "../forms/SignupPageHeader";
 export const HomePage = () => {
   const doctorByLocation = useDoctorByLocation();
   useEffect(() => {
-    onSearch();
+    onSearch(); // eslint-disable-next-line
   }, []);
   // let details;
   const onSearch = async () => {

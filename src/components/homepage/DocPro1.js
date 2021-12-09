@@ -50,7 +50,7 @@ export const DocPro1 = () => {
       onlineUser = "";
       setuser(onlineUser);
     }
-    fetchDoctor();
+    fetchDoctor(); // eslint-disable-next-line
   }, [doctorId]);
 
   const fetchDoctor = async () => {

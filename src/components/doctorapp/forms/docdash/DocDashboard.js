@@ -34,7 +34,7 @@ export const DocDashboard = () => {
   console.log("doctor appoint", appointments);
   console.log("doctor consulted", consultedappointments);
   useEffect(() => {
-    fetchDoctor();
+    fetchDoctor(); // eslint-disable-next-line
   }, [appointments]);
 
   const fetchDoctor = async () => {

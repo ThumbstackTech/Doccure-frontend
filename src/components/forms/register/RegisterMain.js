@@ -45,7 +45,7 @@ export const RegisterMain = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("data..", name, gender, age, email);
-    let phone = localStorage.getItem("localPhoneNo", phone);
+    let phone = localStorage.getItem("localPhoneNo");
     let data = {
       name: name,
       phoneNo: phone,
