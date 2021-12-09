@@ -60,7 +60,7 @@ export const DocDashHeader = () => {
             </div>
             <ul className="main-nav">
               <li>
-                <a href="/#" onClick={logout}>
+                <a href="/doctorlogin" onClick={logout}>
                   <i className="fas fa-plus" /> Logout
                 </a>
               </li>

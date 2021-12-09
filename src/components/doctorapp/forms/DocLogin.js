@@ -66,7 +66,7 @@ export const DocLogin = () => {
       dispatch(setUser(res.success[1]));
 
       // dispatch(setToken(res.success[3]));
-      navigate("/doctor-dashboard");
+      navigate("/doctordashboard");
       // navigate(-1);
     }
   };
