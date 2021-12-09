@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 import { useRegisterUser } from "../../../hooks/user";
 // import { useRegisterUser } from "../../hooks/user";

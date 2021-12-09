@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSendOtp, useVerifyUser } from "../../hooks/user";
 
@@ -18,7 +18,7 @@ export const SignupMain = () => {
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
 
-  const [message, setMessage] = useState(false);
+  // const [message, setMessage] = useState(false);
 
   const navigate = useNavigate();
 

@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+// import { useParams } from "react-router";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
 import { DoctorCard } from "./DoctorCard";
 
 export const DocSection = ({ docData }) => {
-  console.log("doc details", docData);
-  const testdata = ["ams", "bms"];
-
   // const [doctorid, setDoctor] = useState('');
   // const [userid, setUser] = useState('');
 
@@ -41,12 +38,10 @@ export const DocSection = ({ docData }) => {
           <div className="row">
             <div className="col-md-12">
               <div className="section-header">
-                {testdata.length > 1 &&
-                  testdata.map((doc) => {
-                    <h2>
-                      Doctors <span>Nearby You</span>
-                    </h2>;
-                  })}
+                <h2>
+                  Doctors <span>Nearby You</span>
+                </h2>
+                ;
               </div>
               <div className="our-doctor">
                 <div className="row">

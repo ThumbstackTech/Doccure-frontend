@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DocFooter from "./DocFooter";
 import { DocRegHeader } from "./DocRegHeader";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRegisterDoctor } from "../../../hooks/doctor";
 
 export const DocRegister = () => {

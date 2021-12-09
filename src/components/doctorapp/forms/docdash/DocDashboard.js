@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   useDoctorDetails,
   useDoctorAppointments,
-  useCreateAppointments,
+  // useCreateAppointments,
   useConsultedAppointment,
   useMarkConsulted,
 } from "../../../../hooks/doctor";
 
 export const DocDashboard = () => {
-  const navigate = useNavigate();
-  const [user, setuser] = useState("");
+  // const navigate = useNavigate();
+  // const [user, setuser] = useState("");
   const doctorById = useDoctorDetails();
   const doctorAppointment = useDoctorAppointments();
-  const createAppointment = useCreateAppointments();
+  // const createAppointment = useCreateAppointments();
   const consultedAppointment = useConsultedAppointment();
   const markConsulted = useMarkConsulted();
   const doctor = useSelector((state) => state.setDoctor);
@@ -39,15 +39,15 @@ export const DocDashboard = () => {
 
   const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
-    if (onlineUser) {
-      onlineUser = onlineUser;
-      setuser(onlineUser);
-    } else {
-      onlineUser = "";
-      setuser(onlineUser);
-    }
+    // if (onlineUser) {
+    //   // onlineUser = onlineUser;
+    //   setuser(onlineUser);
+    // } else {
+    //   onlineUser = "";
+    //   setuser(onlineUser);
+    // }
     let doctorId = onlineUser.doctorId;
-    let data = doctorId;
+    // let data = doctorId;
     // let date = Date();
     let today = new Date(),
       date =

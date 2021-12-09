@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import DocFooter from "./DocFooter";
 import DocHeader from "./DocHeader";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSendOtp, useVerifyDoctor } from "../../../hooks/doctor";
 
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../actions/setUser";
 
-import { setToken } from "../../../actions/setToken";
+// import { setToken } from "../../../actions/setToken";
 
 export const DocLogin = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const DocLogin = () => {
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
 
-  const [message, setMessage] = useState(false);
+  // const [message, setMessage] = useState(false);
 
   // const getOtp = () => {
   //   // event.preventDefault();
@@ -39,23 +39,6 @@ export const DocLogin = () => {
   //   //     setMessage(true);
   //   //   });
   // };
-
-  const loginHandle = () => {
-    // event.preventDef9ault();
-    console.log("phone number", phone);
-
-    var postData = {};
-    axios
-      .post("url", postData)
-      .then((response) => {
-        console.log(response, "response data...");
-        // history.push('/')
-      })
-      .catch((err) => {
-        console.log("Error!! Something went Wrong..");
-        setMessage(true);
-      });
-  };
 
   const getOtp = async () => {
     // event.preventDefault();
