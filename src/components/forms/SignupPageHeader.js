@@ -84,17 +84,17 @@ export const SignupPageHeader = () => {
             </ul>
           </div>
           {user ? (
-            <ul className="nav header-navbar-rht">
+            <ul className="main-nav">
               <li className="nav-item">
-                {/* <Link className=" header-login" to="/"> */}
-                Hi {user}
-                {/* </Link> */}
+                <Link to="/#">
+                  <i className="fas fa-plus"> </i>Hi {user}
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="/signupPage" onClick={logout}>
-                  <i className="fas fa-plus" />
+                <Link to="/" onClick={logout}>
+                  <i className="fas fa-plus"> </i>
                   Logout
-                </a>
+                </Link>
                 {/* <Link className=" header-login" to="/"> */}
                 {/* Logout */}
                 {/* </Link> */}

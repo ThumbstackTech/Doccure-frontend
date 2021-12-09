@@ -63,8 +63,8 @@ export const SignupMain = () => {
     } else {
       dispatch(setUser(res.success[1]));
       dispatch(setToken(res.success[3]));
-      navigate("/homepage");
-      // navigate(-1);
+      // navigate("/homepage");
+      navigate(-1);
     }
     // axios
     //   .post("https://doccure-api.herokuapp.com/api/user/verify-otp", postData)
@@ -110,7 +110,7 @@ export const SignupMain = () => {
                       <div className="form-group">
                         <label>Phone Number</label>
                         <input
-                          type="number"
+                          type="tel"
                           className="form-control"
                           value={phone}
                           maxlength="10"
@@ -125,7 +125,7 @@ export const SignupMain = () => {
                         >
                           <label>OTP</label>
                           <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             value={otp}
                             maxlength="6"
