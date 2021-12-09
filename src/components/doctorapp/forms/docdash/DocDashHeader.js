@@ -27,7 +27,7 @@ export const DocDashHeader = () => {
 
     dispatch(setToken(""));
     localStorage.setItem("localPhoneNo", "");
-    navigate("/doctor-login");
+    navigate("/doctorlogin");
   };
   return (
     <>

@@ -33,9 +33,9 @@ const App = () => {
         <Route path="/tokenbooking" element={<TokenBooking />} />
         <Route path="/signuppage" element={<SignupPage />} />
         <Route path="/registerpage" element={<RegisterPage />} />
-        <Route exact path="/doctor-login" element={<DocLogin />} />
-        <Route path="/doctor-registration" element={<DocRegister />} />
-        <Route path="/doctor-dashboard" element={<DocDashboard />} />
+        <Route exact path="/doctorlogin" element={<DocLogin />} />
+        <Route path="/doctorregistration" element={<DocRegister />} />
+        <Route path="/doctordashboard" element={<DocDashboard />} />
         {/* <Route path="/doctor-profile" element={<DocProfile />} /> */}
       </Routes>
       {/* <SignupPage/>
