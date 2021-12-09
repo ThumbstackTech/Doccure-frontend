@@ -61,7 +61,7 @@ export const DocLogin = () => {
     let res = await verify(data);
     console.log("verify res", res.success[2]);
     if (!res.success[2]) {
-      navigate("/doctor-registration");
+      navigate("/doctorregistration");
     } else {
       dispatch(setUser(res.success[1]));
 
