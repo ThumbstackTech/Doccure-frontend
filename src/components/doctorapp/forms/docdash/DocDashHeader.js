@@ -41,13 +41,13 @@ export const DocDashHeader = () => {
                 <span />
               </span>
             </a>
-            <a href="index.html" className="navbar-brand logo">
+            <a href="/" className="navbar-brand logo">
               <img src="assets/img/logo.png" className="img-fluid" alt="Logo" />
             </a>
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
-              <a href="index.html" className="menu-logo">
+              <a href="/" className="menu-logo">
                 <img
                   src="assets/img/logo.png"
                   className="img-fluid"

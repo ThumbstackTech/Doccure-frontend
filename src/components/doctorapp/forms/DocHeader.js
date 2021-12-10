@@ -37,7 +37,7 @@ export const DocHeader = () => {
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
-              <a href="index.html" className="menu-logo">
+              <a href="/doctorlogin" className="menu-logo">
                 <img
                   src="/assets/img/logo.png"
                   className="img-fluid"

@@ -13,7 +13,7 @@ export const DocRegHeader = () => {
                 <span />
               </span>
             </a>
-            <a href="index.html" className="navbar-brand logo">
+            <a href="/" className="navbar-brand logo">
               <img src="assets/img/logo.png" className="img-fluid" alt="Logo" />
             </a>
           </div>

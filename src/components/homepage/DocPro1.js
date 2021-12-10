@@ -166,7 +166,10 @@ export const DocPro1 = () => {
                       </h4>
                       <h4 style={{ margin: "25px 0" }} className="doc-name">
                         Patients In Queue -{" "}
-                        <strong>{appointments && appointments.length}</strong>
+                        <strong>
+                          {appointments &&
+                            appointments.length - consultedappointments.length}
+                        </strong>
                       </h4>
                       <h4 style={{ margin: "25px 0" }} className="doc-name">
                         Current Token -{" "}
