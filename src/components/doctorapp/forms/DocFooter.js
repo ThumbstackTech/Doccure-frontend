@@ -93,8 +93,8 @@ export const DocFooter = () => {
                       </span>
                       <p>
                         {" "}
-                        3556 Beech Street, San Francisco,
-                        <br /> California, CA 94108{" "}
+                        Mumbai Maharastra,
+                        <br /> India{" "}
                       </p>
                     </div>
                     <p>
