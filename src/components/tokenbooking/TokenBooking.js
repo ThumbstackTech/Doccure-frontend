@@ -178,13 +178,13 @@ export const TokenBooking = () => {
                     </select>
                     before
                   </p>
-                  <a
+                  {/* <a
                     style={{ marginTop: "20px" }}
                     href="invoice-view.html"
                     className="btn btn-primary view-inv-btn"
                   >
                     Delete Token
-                  </a>
+                  </a> */}
                   <Link
                     to="/"
                     style={{ marginTop: "20px" }}
