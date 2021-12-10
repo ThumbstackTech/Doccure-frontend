@@ -84,7 +84,7 @@ export const DocLogin = () => {
                   <div className="row align-items-center justify-content-center">
                     <div className="col-md-7 col-lg-6 login-left">
                       <img
-                        src="assets/img/login-banner.png"
+                        src="/assets/img/login-banner.png"
                         className="img-fluid"
                         alt="Doccure Login"
                       />
@@ -95,35 +95,36 @@ export const DocLogin = () => {
                           Doctor <span>Login</span>
                         </h3>
                       </div>
-                      <form action="doctor-register.html">
-                        <div className="form-group">
-                          <label>Phone Number</label>
+
+                      <div className="form-group">
+                        <label>Phone Number</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          id="phone"
+                          maxLength="10"
+                          className="form-control"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                      </div>
+                      {showOtp && (
+                        <div
+                          // style={{ display: "none" }}
+                          id="otpbox"
+                          className="form-group"
+                        >
+                          <label>OTP</label>
                           <input
-                            type="tel"
-                            name="phone"
-                            id="phone"
+                            type="text"
                             className="form-control"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            value={otp}
+                            maxLength="6"
+                            onChange={(e) => setOtp(e.target.value)}
                           />
                         </div>
-                        {showOtp && (
-                          <div
-                            // style={{ display: "none" }}
-                            id="otpbox"
-                            className="form-group"
-                          >
-                            <label>OTP</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              value={otp}
-                              maxlength="6"
-                              onChange={(e) => setOtp(e.target.value)}
-                            />
-                          </div>
-                        )}
-                        {/* <div className="form-group">
+                      )}
+                      {/* <div className="form-group">
                           <label>OTP</label>
                           <input
                             type="number"
@@ -134,41 +135,41 @@ export const DocLogin = () => {
                             onChange={(e) => setOtp(e.target.value)}
                           />
                         </div> */}
-                        {!showOtp && (
-                          <ul
-                            style={{
-                              justifyContent: "center",
-                              marginBottom: "20px",
-                            }}
-                            className="nav nav-tabs nav-tabs-solid"
-                          >
-                            <li className="nav-item">
-                              <button
-                                id="otp"
-                                type="button"
-                                onClick={getOtp}
-                                className="btn btn-primary"
-                              >
-                                Get OTP
-                              </button>
-                            </li>
-                          </ul>
-                        )}
-                        {showOtp && (
-                          <button
-                            style={{
-                              width: "100%",
-                              backgroundColor: "#00e65b",
-                              border: "1px solid #00e65b",
-                            }}
-                            className="btn btn-primary btn-lg login-btn"
-                            onClick={verifyOtp}
-                            type=""
-                          >
-                            Verify OTP
-                          </button>
-                        )}
-                        {/* <ul
+                      {!showOtp && (
+                        <ul
+                          style={{
+                            justifyContent: "center",
+                            marginBottom: "20px",
+                          }}
+                          className="nav nav-tabs nav-tabs-solid"
+                        >
+                          <li className="nav-item">
+                            <button
+                              id="otp"
+                              type="button"
+                              onClick={getOtp}
+                              className="btn btn-primary"
+                            >
+                              Get OTP
+                            </button>
+                          </li>
+                        </ul>
+                      )}
+                      {showOtp && (
+                        <button
+                          style={{
+                            width: "100%",
+                            backgroundColor: "#00e65b",
+                            border: "1px solid #00e65b",
+                          }}
+                          className="btn btn-primary btn-lg login-btn"
+                          onClick={verifyOtp}
+                          type="submit"
+                        >
+                          Verify OTP
+                        </button>
+                      )}
+                      {/* <ul
                           style={{
                             justifyContent: "center",
                             marginBottom: "20px",
@@ -194,7 +195,7 @@ export const DocLogin = () => {
                             </button>
                           </li>
                         </ul> */}
-                        {/* <button
+                      {/* <button
                           style={{ justifyCcontent: "center", width: "100%" }}
                           className="btn btn-primary btn-lg login-btn"
                           onClick={() => getOtp()}
@@ -202,7 +203,7 @@ export const DocLogin = () => {
                         >
                           Login
                         </button> */}
-                      </form>
+                      {/* </form> */}
                     </div>
                   </div>
                 </div>
