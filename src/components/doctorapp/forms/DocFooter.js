@@ -50,20 +50,20 @@ export const DocFooter = () => {
                   <h2 className="footer-title">For Patients</h2>
                   <ul>
                     <li>
-                      <a href="login.html">Login</a>
+                      <a href="/doctorlogin">Login</a>
                     </li>
                     <li>
-                      <a href="register.html">Register</a>
+                      <a href="/doctorregistration">Register</a>
                     </li>
-                    <li>
-                      <a href="index.html">Home</a>
+                    {/* <li>
+                      <a href="/">Home</a>
                     </li>
                     <li>
                       <a href="favourites.html">Bookmarks</a>
                     </li>
                     <li>
                       <a href="patient-dashboard.html">Tokens</a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -72,13 +72,13 @@ export const DocFooter = () => {
                   <h2 className="footer-title">For Doctors</h2>
                   <ul>
                     <li>
-                      <a href="doctor-login.html">Login</a>
+                      <a href="/doctorlogin">Login</a>
                     </li>
                     <li>
-                      <a href="doctor-register.html">Register</a>
+                      <a href="/doctorregistration">Register</a>
                     </li>
                     <li>
-                      <a href="doctor-dashboard.html">Doctor Dashboard</a>
+                      <a href="/doctordashboard">Doctor Dashboard</a>
                     </li>
                   </ul>
                 </div>
@@ -108,7 +108,7 @@ export const DocFooter = () => {
                         className="__cf_email__"
                         data-cfemail="3a5e5559594f485f7a5f425b574a565f14595557"
                       >
-                        [email&nbsp;protected]
+                        {/* [email&nbsp;protected] */}
                       </a>
                     </p>
                   </div>

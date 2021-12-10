@@ -14,15 +14,19 @@ export const TokenHeader = () => {
                 <span />
               </span>
             </Link>
-            <Link to="index.html" className="navbar-brand logo">
-              <img src="assets/img/logo.png" className="img-fluid" alt="Logo" />
+            <Link to="/" className="navbar-brand logo">
+              <img
+                src="/assets/img/logo.png"
+                className="img-fluid"
+                alt="Logo"
+              />
             </Link>
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
-              <Link to="index.html" className="menu-logo">
+              <Link to="/" className="menu-logo">
                 <img
-                  src="assets/img/logo.png"
+                  src="/assets/img/logo.png"
                   className="img-fluid"
                   alt="Logo"
                 />
@@ -38,12 +42,12 @@ export const TokenHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/bookmark">
+                <Link to="/">
                   <i className="fas fa-plus" /> Bookmarks
                 </Link>
               </li>
               <li>
-                <Link to="/tokenbooking">
+                <Link to="/">
                   <i className="fas fa-plus" /> Tokens
                 </Link>
               </li>

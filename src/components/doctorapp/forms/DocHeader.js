@@ -27,15 +27,19 @@ export const DocHeader = () => {
                 <span />
               </span>
             </a>
-            <a href="index.html" className="navbar-brand logo">
-              <img src="assets/img/logo.png" className="img-fluid" alt="Logo" />
+            <a href="/doctorlogin" className="navbar-brand logo">
+              <img
+                src="/assets/img/logo.png"
+                className="img-fluid"
+                alt="Logo"
+              />
             </a>
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
               <a href="index.html" className="menu-logo">
                 <img
-                  src="assets/img/logo.png"
+                  src="/assets/img/logo.png"
                   className="img-fluid"
                   alt="Logo"
                 />
@@ -46,12 +50,12 @@ export const DocHeader = () => {
             </div>
             <ul className="main-nav">
               <li>
-                <a href="doctor-dashboard.html">
+                <a href="/doctordashboard">
                   <i className="fas fa-plus" /> Doctor Dashboard
                 </a>
               </li>
               <li className="login-link">
-                <a href="doctor-login.html">Login / Register</a>
+                <a href="/doctorlogin">Login / Register</a>
               </li>
             </ul>
           </div>

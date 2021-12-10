@@ -47,7 +47,7 @@ export const DocRegister = () => {
     };
     let res = await register(data);
     if (res) {
-      navigate("/doctor-dashboard");
+      navigate("/doctordashboard");
     } else {
       console.log("Error!! Something went Wrong..");
     }

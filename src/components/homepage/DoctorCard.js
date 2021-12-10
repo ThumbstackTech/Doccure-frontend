@@ -48,12 +48,16 @@ export const DoctorCard = ({ doctor }) => {
               <i className="feather-check-circle verified" />
             </h3>
             <p className="speciality">
-              MBBS, MD - Dermatology , Venereology &amp; Lepros
+              {doctor &&
+                doctor.specialization &&
+                doctor.specialization.map((spec) => {
+                  return spec;
+                })}
             </p>
             <p className="speciality">
               Clinic - Apollo{" "}
               <span style={{ marginLeft: "65px" }}>
-                Experience - {doctor.experience}
+                Experience - {doctor.experience} years
               </span>
             </p>
             <ul className="available-info">

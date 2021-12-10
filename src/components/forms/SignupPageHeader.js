@@ -51,7 +51,7 @@ export const SignupPageHeader = () => {
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
-              <Link to="index.html" className="menu-logo">
+              <Link to="/" className="menu-logo">
                 <img
                   src="assets/img/logo.png"
                   className="img-fluid"
@@ -79,7 +79,7 @@ export const SignupPageHeader = () => {
                 </Link>
               </li>
               <li className="login-link">
-                <Link to="login.html">Login / Register</Link>
+                <Link to="/signuppage">Login / Register</Link>
               </li>
             </ul>
           </div>

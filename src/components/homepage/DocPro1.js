@@ -97,7 +97,7 @@ export const DocPro1 = () => {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <a href="index.html">Home</a>
+                      <a href="/">Home</a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Doctor Profile
@@ -127,7 +127,11 @@ export const DocPro1 = () => {
                         {doctor && doctor.doctorName}
                       </h4>
                       <p className="doc-speciality">
-                        BDS, MDS - Oral &amp; Maxillofacial Surgery
+                        {doctor &&
+                          doctor.specialization &&
+                          doctor.specialization.map((spec) => {
+                            return spec;
+                          })}
                       </p>
                       <div className="clinic-details">
                         <p

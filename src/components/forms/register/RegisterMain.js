@@ -100,7 +100,7 @@ export const RegisterMain = () => {
                       </h3>
                     </div>
 
-                    <form action="index.html">
+                    <form action="/">
                       <div class="form-group">
                         <label>Name</label>
                         <input

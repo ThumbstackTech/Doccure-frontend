@@ -46,19 +46,19 @@ export const SignupPageFooter = () => {
                   <h2 className="footer-title">For Patients</h2>
                   <ul>
                     <li>
-                      <a href="login.html">Login</a>
+                      <a href="/signuppage">Login</a>
                     </li>
                     <li>
-                      <a href="register.html">Register</a>
+                      <a href="/signuppage">Register</a>
                     </li>
                     <li>
-                      <a href="index.html">Home</a>
+                      <a href="/">Home</a>
                     </li>
                     <li>
-                      <a href="favourites.html">Bookmarks</a>
+                      <a href="/">Bookmarks</a>
                     </li>
                     <li>
-                      <a href="patient-dashboard.html">Tokens</a>
+                      <a href="/">Tokens</a>
                     </li>
                   </ul>
                 </div>
@@ -68,13 +68,13 @@ export const SignupPageFooter = () => {
                   <h2 className="footer-title">For Doctors</h2>
                   <ul>
                     <li>
-                      <a href="doctor-login.html">Login</a>
+                      <a href="/doctorlogin">Login</a>
                     </li>
                     <li>
-                      <a href="doctor-register.html">Register</a>
+                      <a href="/doctorlogin">Register</a>
                     </li>
                     <li>
-                      <a href="doctor-dashboard.html">Doctor Dashboard</a>
+                      <a href="/doctorlogin">Doctor Dashboard</a>
                     </li>
                   </ul>
                 </div>

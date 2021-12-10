@@ -88,7 +88,7 @@ export const DocDashboard = () => {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <a href="index.html">Home</a>
+                      <a href="/doctordashboard">Home</a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Dashboard
