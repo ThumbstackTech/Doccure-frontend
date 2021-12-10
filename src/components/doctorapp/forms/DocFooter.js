@@ -14,9 +14,9 @@ export const DocFooter = () => {
                   </div>
                   <div className="footer-about-content">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.{" "}
+                      aliqua.{" "} */}
                     </p>
                     <div className="social-icon">
                       <ul>
