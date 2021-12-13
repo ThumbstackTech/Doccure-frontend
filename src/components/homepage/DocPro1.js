@@ -114,19 +114,19 @@ export const DocPro1 = () => {
               <div className="card-body">
                 <div className="doctor-widget">
                   <div className="doc-info-left">
-                    <div className="doctor-img">
+                    <div style={{width:"100%",flex:"auto"}} className="doctor-img">
                       <img
                         src="/assets/img/doctors/doctor-08.jpg"
                         className="img-fluid"
                         alt="User pucture"
                       />
                     </div>
-                    <div className="doc-info-cont">
-                      <h4 className="doc-name">
-                        {" "}
+                    <div style={{width:"100%",marginTop:"40px"}} className="doc-info-cont">
+                      <h4 style={{fontSize:"25px"}} className="doc-name">
+                        {"Dr. "}
                         {doctor && doctor.doctorName}
                       </h4>
-                      <p className="doc-speciality">
+                      <p style={{fontSize:"15px"}} className="doc-speciality">
                         {doctor &&
                           doctor.specialization &&
                           doctor.specialization.map((spec) => {
@@ -141,15 +141,10 @@ export const DocPro1 = () => {
                           <i className="feather-map-pin" /> Mumbai -{" "}
                           <a href="/">Get Directions</a>
                         </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="doc-info-right">
-                    <div className="clini-infos">
-                      <ul>
-                        <li>
+                        <p>
                           <i className="feather-calendar" /> Available Now
-                        </li>
+                        </p>
+                        <ul>
                         <li>
                           <i className="far fa-money-bill-alt" /> ${" "}
                           {doctor && doctor.consultationFees}{" "}
@@ -160,6 +155,12 @@ export const DocPro1 = () => {
                           />{" "}
                         </li>
                       </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{width:"100%",flex:"auto",maxWidth:"530px"}} className="doc-info-right">
+                    <div className="clini-infos">
+                      
                       <h4 style={{ margin: "25px 0" }} className="doc-name">
                         Consultation Hours :{" "}
                         <strong className="text-success">9am - 5pm</strong>

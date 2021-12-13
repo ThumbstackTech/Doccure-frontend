@@ -8315,6 +8315,8 @@ body .multi-optn {
 }
 .appointment-tab {
   margin-bottom: 30px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px !important;
 }
 .appointment-tab .nav-tabs.nav-tabs-solid > li > a {
   background-color: #ffffff;
@@ -8338,9 +8340,6 @@ body .multi-optn {
 .appointment-tab .nav-tabs {
   background-color: #fff;
   padding: 1.5rem;
-  border: 1px solid #f0f0f0;
-  border-radius: 8px 8px 0 0 !important;
-  border-bottom: 0;
 }
 .appointment-tab .tab-content {
   padding-top: 0;

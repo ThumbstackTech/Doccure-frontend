@@ -3,6 +3,7 @@ import { useDoctorByLocation } from "../../hooks/doctor";
 import SearchDoc from "./SearchDoc";
 import { SignupPageFooter } from "../forms/SignupPageFooter";
 import { SignupPageHeader } from "../forms/SignupPageHeader";
+import { Fab } from "../FabButton/fab";
 
 export const HomePage = () => {
   const doctorByLocation = useDoctorByLocation();
@@ -53,6 +54,8 @@ export const HomePage = () => {
 
   return (
     <>
+    
+    <Fab/>
       <div className="main-wrapper">
         <SignupPageHeader />
         <div>

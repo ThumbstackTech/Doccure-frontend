@@ -192,11 +192,31 @@ export const DocDashboard = () => {
                   <div className="col-md-12">
                     <h4 className="sub-heading">Manage Patients</h4>
                     <div className="appointment-tab">
+                    <div className="clini-infos">
+                      
+                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
+                        Patient Name :{" "}
+                        <strong className="text-success">XYZ</strong>
+                      </h4>
+                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
+                        Patient Age -{" "}
+                        <strong>
+                          25
+                        </strong>
+                      </h4>
+                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
+                        Patient Gender -{" "}
+                        <strong>
+                          Male
+                        </strong>
+                      </h4>
+                     
+                    </div>
                       <ul
                         style={{ justifyContent: "center" }}
                         className="nav nav-tabs nav-tabs-solid"
                       >
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                           <button
                             style={{ borderRadius: "7px", padding: "10px" }}
                             type="button"
@@ -204,7 +224,7 @@ export const DocDashboard = () => {
                           >
                             Pass Current Patient
                           </button>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                           <button
                             style={{ borderRadius: "7px", padding: "10px" }}
