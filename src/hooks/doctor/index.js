@@ -8,8 +8,9 @@ import { appointments } from "../../actions/appointments";
 import { consultedappointments } from "../../actions/consultedappointments";
 import { setUser } from "../../actions/setUser";
 import { setToken } from "../../actions/setToken";
+import { createToken } from "../../actions/createToken";
 
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export const useRegisterDoctor = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,11 @@ export const useRegisterDoctor = () => {
       console.log(user.data);
       dispatch(setUser(user.data.doctor));
       dispatch(setToken(user.data.token));
+      toast.success("Doctor Registered");
       return true;
     } catch (error) {
       console.log(error);
+      toast.error("Error Occured");
       return false;
     }
   };
@@ -37,10 +40,12 @@ export const useVerifyDoctor = () => {
     try {
       let user = await axios.post("/api/doctor/verify-otp", data);
       console.log("verify user", user.data);
+      toast.success("Doctor Verified");
 
       return user.data;
     } catch (error) {
       console.log(error);
+      toast.error("Error Occured");
       return false;
     }
   };
@@ -55,11 +60,13 @@ export const useSendOtp = () => {
     try {
       let user = await axios.post("/api/doctor/send-otp", data);
       console.log("doctor", user.data);
+      toast.success("Otp Sent");
       //   dispatch(setUser(user.data.user));
       //   dispatch(setToken(user.data.user.jwt));
       return true;
     } catch (error) {
       console.log(error);
+      toast.error("Error Occured");
       return false;
     }
   };
@@ -110,10 +117,12 @@ export const useDoctorAppointments = () => {
     console.log("appoint doctor id", data);
     try {
       let doctor = await axios.post("/api/doctor/fetch-appointment", data);
-      console.log("appoint ", doctor.data);
+      console.log("fetch appoint ", doctor.data);
       dispatch(appointments(doctor.data.appointments));
-      //   return doctor.data;
+      // dispatch(appointments(doctor.data.appointments));
       dispatch(setDoctor(doctor.data.doctor));
+      //   return doctor.data;
+      // dispatch(setDoctor(doctor.data.doctor));
     } catch (error) {
       console.log(error);
     }
@@ -129,14 +138,17 @@ export const useCreateAppointments = () => {
     console.log("appoint doctor id", data);
     try {
       let doctor = await axios.post("/api/doctor/create-appointment", data);
-      console.log("appoint ", doctor.data);
-      dispatch(appointments(doctor.data.appointments));
-      dispatch(setDoctor(doctor.data.doctor));
+      console.log("create appoint ", doctor.data);
+      dispatch(createToken(doctor.data.appointments));
+      // dispatch(setDoctor(doctor.data.doctorId));
+      toast.success("Token Booked");
+      // dispatch(setDoctor(doctor.data.doctorId));
+      // return doctor.data.appointments;
 
-      //   return doctor.data;
       //   dispatch(setToken(user.data.token));
     } catch (error) {
-      console.log(error);
+      console.log("create token", error);
+      toast.error("Error Occured");
     }
   };
 
@@ -171,12 +183,35 @@ export const useMarkConsulted = () => {
       let doctor = await axios.post("/api/doctor/consulted-appointment", data);
       console.log("doc consulted ", doctor.data);
       dispatch(consultedappointments(doctor.data.appointment));
+      toast.success("Consulted");
       //   return doctor.data;
       //   dispatch(setToken(user.data.token));
+    } catch (error) {
+      console.log(error);
+      toast.error("Error Occured");
+    }
+  };
+
+  return markConsulted;
+};
+
+export const useFetchAppointment = () => {
+  const dispatch = useDispatch();
+
+  const fetchAppointment = async (appointmentId) => {
+    console.log("appoint  id", appointmentId);
+    try {
+      let doctor = await axios.post("/api/doctor/fetch-app", { appointmentId });
+      console.log("fetch appoint res ", doctor.data);
+      dispatch(createToken(doctor.data.appointment));
+      // dispatch(appointments(doctor.data.appointments));
+      dispatch(setDoctor(doctor.data.doctor));
+      //   return doctor.data;
+      // dispatch(setDoctor(doctor.data.doctor));
     } catch (error) {
       console.log(error);
     }
   };
 
-  return markConsulted;
+  return fetchAppointment;
 };
