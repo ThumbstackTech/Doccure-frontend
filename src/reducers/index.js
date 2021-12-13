@@ -7,6 +7,7 @@ import setDoctor from "./setDoctor";
 import appointments from "./appointments";
 import setBookmark from "./setBookmark";
 import consultedappointments from "./consultedappointments";
+import createToken from "./createToken";
 
 const reducers = combineReducers({
   setToken,
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   appointments,
   setBookmark,
   consultedappointments,
+  createToken,
 });
 
 export default reducers;

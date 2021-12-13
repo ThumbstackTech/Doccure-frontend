@@ -27,6 +27,7 @@ export const DocPro1 = () => {
   const doctor = useSelector((state) => state.setDoctor);
   // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
+  const createToken = useSelector((state) => state.createToken);
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
   );
@@ -39,6 +40,7 @@ export const DocPro1 = () => {
 
   console.log("individual doc appointments", appointments);
   console.log("doc consulted appointments", consultedappointments);
+  console.log("createToken", createToken);
   // const [doctor, setDoctor] = useState("");
   const [user, setuser] = useState("");
   useEffect(() => {
@@ -79,10 +81,12 @@ export const DocPro1 = () => {
         today.getDate();
     let userId = user.userId;
     let data = { doctorId, date, userId };
-    console.log("create a[pp", data);
+    console.log("create app", data);
     await createAppointment(data);
+    // console.log("create token", createToken);
     // dispatch(setToken(""));
-    navigate("/tokenbooking");
+    navigate(`/tokenbooking/${doctorId}/${createToken.appointmentId}`);
+    // to={`/docpro1/${doctor.doctorId}`}
   };
   return (
     <>

@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import DocFooter from "../doctorapp/forms/DocFooter";
 import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SignupPageFooter from "../forms/SignupPageFooter";
-// import {
-//   useDoctorDetails,
-//   useDoctorAppointments,
-//   // useConsultedAppointment,
-// } from "../../hooks/doctor";
+import {
+  // useDoctorDetails,
+  useDoctorAppointments,
+  // useConsultedAppointment,
+  useFetchAppointment,
+} from "../../hooks/doctor";
 
 export const TokenBooking = () => {
+  const { appointmentId, doctorId } = useParams();
   // const doctorById = useDoctorDetails();
-  // const doctorAppointment = useDoctorAppoin+*-tments();
+  const doctorAppointment = useDoctorAppointments();
   // const consultedAppointment = useConsultedAppointment();
+  const fetchAppointment = useFetchAppointment();
   const doctor = useSelector((state) => state.setDoctor);
+  // const doctor = useSelector((state) => state.setDoctor);
   // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const consultedappointments = useSelector(
@@ -27,36 +32,47 @@ export const TokenBooking = () => {
   //       ? appointments.length - 1
   //       : appointments.length
   //     : appointments.length - 1;
-
+  const createToken = useSelector((state) => state.createToken);
   console.log("token appointments", appointments);
-  console.log("token doctor", doctor);
-  // useEffect(() => {
-  //   fetchDoctor();
-  // }, []);
-  // const fetchDoctor = async () => {
-  //   let onlineUser = JSON.parse(localStorage.getItem("user"));
-  //   if (onlineUser) {
-  //     onlineUser = onlineUser;
-  //     // setuser(onlineUser);
-  //   } else {
-  //     onlineUser = "";
-  //     // setuser(onlineUser);
-  //   }
-  //   let doctorId = onlineUser.doctorId;
-  //   let data = doctorId;
-  //   // let date = Date();
-  //   let today = new Date(),
-  //     date =
-  //       today.getFullYear() +
-  //       "-" +
-  //       (today.getMonth() + 1) +
-  //       "-" +
-  //       today.getDate();
-  //   console.log("today", date);
-  //   await doctorById({ doctorId });
-  //   await doctorAppointment({ doctorId, date });
-  //   // await consultedAppointment({ doctorId, date });
-  // };
+  console.log("fetch token doctor", doctor);
+  console.log("fetch appointmneyt", appointmentId);
+  console.log("createToken", createToken);
+
+  // let doctorId = doctor != null && doctor.doctorId;
+  useEffect(() => {
+    fetchApp();
+    fetchDoctor();
+    // eslint-disable-next-line
+  }, []);
+  const fetchApp = async () => {
+    await fetchAppointment(appointmentId);
+  };
+  const fetchDoctor = async () => {
+    // let onlineUser = JSON.parse(localStorage.getItem("user"));
+    // if (onlineUser) {
+    //   // onlineUser = onlineUser;
+    //   // setuser(onlineUser);
+    // } else {
+    //   onlineUser = "";
+    //   // setuser(onlineUser);
+    // }
+
+    console.log("fetch doctor id token", doctorId);
+    // let data = doctorId;
+    // let date = Date();
+    let today = new Date(),
+      date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+    console.log("today", date);
+
+    // await doctorById({ doctorId });
+    await doctorAppointment({ doctorId, date });
+    // await consultedAppointment({ doctorId, date });
+  };
 
   return (
     <>
@@ -87,7 +103,7 @@ export const TokenBooking = () => {
             <div className="row justify-content-center">
               <div className="col-lg-6">
                 <div className="success-cont">
-                  <img src="assets/img/icons/check-circle.png" alt="logo" />
+                  <img src="/assets/img/icons/check-circle.png" alt="logo" />
                   <h3>Token booked Successfully!</h3>
                   <h3 style={{ fontSize: "2rem" }}>
                     Token No. {appointments && appointments.length}
