@@ -7,17 +7,17 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import SignupPageFooter from "../forms/SignupPageFooter";
 import {
-  useDoctorDetails,
+  // useDoctorDetails,
   useDoctorAppointments,
-  useConsultedAppointment,
+  // useConsultedAppointment,
   useFetchAppointment,
 } from "../../hooks/doctor";
 
 export const TokenBooking = () => {
   const { appointmentId, doctorId } = useParams();
-  const doctorById = useDoctorDetails();
+  // const doctorById = useDoctorDetails();
   const doctorAppointment = useDoctorAppointments();
-  const consultedAppointment = useConsultedAppointment();
+  // const consultedAppointment = useConsultedAppointment();
   const fetchAppointment = useFetchAppointment();
   const doctor = useSelector((state) => state.setDoctor);
   // const doctor = useSelector((state) => state.setDoctor);
