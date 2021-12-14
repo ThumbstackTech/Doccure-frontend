@@ -78,12 +78,13 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* {userAppoint && <Fab />} */}
-      {userAppoint.length > 0 &&
-        userAppoint.map((app) => {
-          return <Fab userAllAppointment={app} />;
-        })}
-
+      <div className="outerDiv">
+        {/* {userAppoint && <Fab />} */}
+        {userAppoint.length > 0 &&
+          userAppoint.map((app) => {
+            return <Fab userAllAppointment={app} />;
+          })}
+      </div>
       <div className="main-wrapper">
         <SignupPageHeader />
         <div>

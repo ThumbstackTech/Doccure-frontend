@@ -55,38 +55,40 @@ export const Fab = ({ userAllAppointment }) => {
   };
   return (
     <>
+      {/* <div > */}
       <div
         id="overlay"
         onClick={() => {
           $(".fab").removeClass("active");
           $("#overlay").removeClass("dark-overlay");
           $("#loadicon").css("display", "block");
+          $(".outerDiv").css("width", "auto");
+          $(".outerDiv").css("height", "auto");
+          $(".outerDiv").css("top", "40%");
         }}
       ></div>
       <div
         class="fab"
         onClick={() => {
-          console.log("akash");
           $(".fab").addClass("active");
           $("#overlay").addClass("dark-overlay");
           $("#loadicon").css("display", "none");
+          $(".outerDiv").css("width", "100%");
+          $(".outerDiv").css("height", "100%");
+          $(".outerDiv").css("top", "auto");
         }}
       >
         <img id="loadicon" style={{ position: "absolute" }} src={icon} alt="" />
         <h1 style={{ fontSize: "20px" }}>
           {consultedappointments && consultedappointments.length}
         </h1>
-        {/* <div className="drname">
-          <h2>Dr.{userAppointment && userAppointment[0].doctor.doctorName}</h2>
-        </div> */}
-
+        <div className="drname">
+          <h2>Dr.XYZ</h2>
+        </div>
         <div className="row cntt-wrapper">
-          <h5 style={{ fontSize: "1.1rem" }} className="text-danger">
-            {/* Dr.{userAppointment && userAppointment[0].doctor.doctorName} */}
-          </h5>
           <div className="dash-widget-info">
             <h6 style={{ fontSize: "1.1rem" }} className="text-danger">
-              Total Patients In Queue{" "}
+              Total Patients In Queue
             </h6>
             <div className="dash-widget-count">
               <h3>{appointments && appointments.length}</h3>
@@ -110,16 +112,7 @@ export const Fab = ({ userAllAppointment }) => {
           </div>
         </div>
       </div>
-      {/* <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-tablet mdl-shadow--2dp center m-t-100">
-                    <div class="box">
-                    <h1>Material Popup</h1>
-                    <h4>Just click the fancy button to see the magic</h4>
-                    <br></br>
-                    <p>This example uses the MDL-Libary for the CSS layout,<br/> the popup itself works it just fine without.</p>
-                    </div>
-                </div>
-            </div> */}
+      {/* </div> */}
     </>
   );
 };
