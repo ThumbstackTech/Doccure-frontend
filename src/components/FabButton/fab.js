@@ -23,14 +23,13 @@ export const Fab = () => {
           $('#loadicon').css('display','block');
       }}></div>
       <div class='fab' onClick={()=>{
-          console.log('akash');
           $('.fab').addClass('active');
           $('#overlay').addClass('dark-overlay');
           $('#loadicon').css('display','none');
   }}>
         <img id="loadicon" style={{position:"absolute"}} src={icon} alt=""/>
         <h1 style={{fontSize:"20px"}}>7</h1>
-
+        <div className="drname"><h2>Dr.XYZ</h2></div>
         <div className='row cntt-wrapper'>
           <div className='dash-widget-info'>
             <h6 style={{ fontSize: '1.1rem' }} className='text-danger'>

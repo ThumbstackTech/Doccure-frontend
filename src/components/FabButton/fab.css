@@ -35,6 +35,11 @@
       margin: 0;
       font-family:'Segoe UI';
   }
+  .fab h2{
+      color: white;
+      margin: 5px 0;
+      font-family:'Segoe UI';
+  }
   
   .fab.active {
     cursor: default;
@@ -81,12 +86,26 @@
   .cntt-wrapper {
     display: none;
     width: 90%;
-    margin: 35px 20px 0 0;
+    margin: 60px 20px 0 0;
     font-family:'Segoe UI';
   }
   
   .active .cntt-wrapper {
     display: block;
+  }
+
+  .drname {
+    display: none;
+    position: absolute;
+    background-color: #3284ff;
+    top: 0;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  .active .drname {
+    display: flex;
+    justify-content: center;
   }
   
   #fab-hdr {
