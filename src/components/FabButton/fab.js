@@ -83,7 +83,7 @@ export const Fab = ({ userAllAppointment }) => {
           {consultedappointments && consultedappointments.length}
         </h1>
         <div className="drname">
-          <h2>Dr.XYZ</h2>
+          <h2>Dr. {userAllAppointment.doctor.doctorName}</h2>
         </div>
         <div className="row cntt-wrapper">
           <div className="dash-widget-info">
