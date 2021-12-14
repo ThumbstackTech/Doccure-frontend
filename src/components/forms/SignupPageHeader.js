@@ -68,16 +68,16 @@ export const SignupPageHeader = () => {
                   <i className="fas fa-plus" /> Home
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/bookmark">
                   <i className="fas fa-plus" /> Bookmarks
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link to="/tokenbooking">
                   <i className="fas fa-plus" /> Tokens
                 </Link>
-              </li>
+              </li> */}
               <li className="login-link">
                 <Link to="/signuppage">Login / Register</Link>
               </li>

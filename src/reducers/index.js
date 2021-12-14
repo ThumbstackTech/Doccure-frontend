@@ -8,9 +8,11 @@ import appointments from "./appointments";
 import setBookmark from "./setBookmark";
 import consultedappointments from "./consultedappointments";
 import createToken from "./createToken";
+import userAppointments from "./userAppointments";
 
 const reducers = combineReducers({
   setToken,
+  userAppointments,
   setUser,
   setDoctorByLoc,
   setDoctor,

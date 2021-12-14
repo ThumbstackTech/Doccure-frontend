@@ -97,7 +97,7 @@ export const SearchDoc = ({ getLocation }) => {
           </div>
         </div>
       </section>
-      {doctorbyloc && doctorbyloc.length > 1 && (
+      {doctorbyloc && doctorbyloc.length > 0 && (
         <DocSection docData={doctorbyloc} />
       )}
     </>

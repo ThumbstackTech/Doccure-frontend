@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useBookmarkDoc } from "../../hooks/user";
+import { useSelector } from "react-redux";
 
-export const DoctorCard = ({ doctor }) => {
-  console.log("doctor card props", doctor);
+export const DoctorCard = ({ doctor, item, Appointment }) => {
+  console.log("doctor card props", Appointment && Appointment.appointment);
+  console.log("doctor card props doctor", doctor.doctorId);
+  const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(doctor.isBookmarked);
   const bookmarkDoc = useBookmarkDoc();
-  console.log("doctor card bookmarked", bookmark);
+  // console.log("doctor card bookmarked", bookmark);
+  // const doctorId = doctor.doctorId;
 
+  console.log(
+    "uu appointed",
+
+    userAppointment[item],
+    item
+  );
+  console.log("token details", userAppointment[0].doctorId, doctor.doctorId);
+
+  useEffect(() => {
+    // const appointed = userAppointment.filter((app) => {
+    //   return userAppointment.find(
+    //     () => userAppointment.doctorId === doctorId
+    //   );
+    // });
+    // let appointmentId = notConsulted[0].appointmentId;
+  }, []);
   // const addBookmark = async (doctorId, bookmark) => {
   const addBookmark = async (doctorId, bookmark) => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
@@ -78,14 +98,28 @@ export const DoctorCard = ({ doctor }) => {
               </li>
             </ul>
             <div className="profile-btn-list">
-              <Link
-                // to="/docpro1"
-                to={`/docpro1/${doctor.doctorId}`}
-                id={"001"}
-                className="btn book-btn"
-              >
-                Book Now
-              </Link>
+              {Appointment &&
+              Appointment.appointment.doctorId === doctor.doctorId ? (
+                // userAppointment &&
+                // Appointment.appointment.doctorId === doctor.doctorId
+                <Link
+                  // to="/docpro1"
+                  to={`/tokenbooking/${doctor.doctorId}/${Appointment.appointmentId}`}
+                  // to={`/docpro1/${doctor.doctorId}`}
+                  id={"001"}
+                  className="btn book-btn"
+                >
+                  Token Booked
+                </Link>
+              ) : (
+                <Link
+                  to={`/docpro1/${doctor.doctorId}`}
+                  id={"001"}
+                  className="btn book-btn"
+                >
+                  Book Token
+                </Link>
+              )}
             </div>
           </div>
         </div>

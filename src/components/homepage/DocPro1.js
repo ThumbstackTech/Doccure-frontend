@@ -28,19 +28,15 @@ export const DocPro1 = () => {
   // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const createToken = useSelector((state) => state.createToken);
+
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
   );
-  // let current =
-  //   appointments.length - 3 > appointments.length
-  //     ? appointments.length - 1 > appointments.length
-  //       ? appointments.length - 1
-  //       : appointments.length
-  //     : appointments.length;
 
   console.log("individual doc appointments", appointments);
   console.log("doc consulted appointments", consultedappointments);
   console.log("createToken", createToken);
+  let appointmentId = createToken && createToken.appointmentId;
   // const [doctor, setDoctor] = useState("");
   const [user, setuser] = useState("");
   useEffect(() => {
@@ -69,6 +65,14 @@ export const DocPro1 = () => {
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
+    // const appointed = appointments.filter((app) => {
+    //   return userAppointment.find(
+    //     (doctorapp) => userAppointment.doctorId === app.doctorId
+    //   );
+    // });
+    // let appointmentId = notConsulted[0].appointmentId;
+
+    // console.log("doctor appointed ", appointed);
   };
 
   const bookAppointment = async () => {
@@ -83,9 +87,9 @@ export const DocPro1 = () => {
     let data = { doctorId, date, userId };
     console.log("create app", data);
     await createAppointment(data);
-    // console.log("create token", createToken);
+    console.log("create tokena after appointment", createToken);
     // dispatch(setToken(""));
-    navigate(`/tokenbooking/${doctorId}/${createToken.appointmentId}`);
+    navigate(`/tokenbooking/${doctorId}/${appointmentId}`);
     // to={`/docpro1/${doctor.doctorId}`}
   };
   return (
@@ -118,19 +122,28 @@ export const DocPro1 = () => {
               <div className="card-body">
                 <div className="doctor-widget">
                   <div className="doc-info-left">
-                    <div style={{width:"100%",flex:"auto"}} className="doctor-img">
+                    <div
+                      style={{ width: "100%", flex: "auto" }}
+                      className="doctor-img"
+                    >
                       <img
                         src="/assets/img/doctors/doctor-08.jpg"
                         className="img-fluid"
                         alt="User pucture"
                       />
                     </div>
-                    <div style={{width:"100%",marginTop:"40px"}} className="doc-info-cont">
-                      <h4 style={{fontSize:"25px"}} className="doc-name">
+                    <div
+                      style={{ width: "100%", marginTop: "40px" }}
+                      className="doc-info-cont"
+                    >
+                      <h4 style={{ fontSize: "25px" }} className="doc-name">
                         {"Dr. "}
                         {doctor && doctor.doctorName}
                       </h4>
-                      <p style={{fontSize:"15px"}} className="doc-speciality">
+                      <p
+                        style={{ fontSize: "15px" }}
+                        className="doc-speciality"
+                      >
                         {doctor &&
                           doctor.specialization &&
                           doctor.specialization.map((spec) => {
@@ -149,22 +162,24 @@ export const DocPro1 = () => {
                           <i className="feather-calendar" /> Available Now
                         </p>
                         <ul>
-                        <li>
-                          <i className="far fa-money-bill-alt" /> ${" "}
-                          {doctor && doctor.consultationFees}{" "}
-                          <i
-                            className="feather-info"
-                            data-bs-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          />{" "}
-                        </li>
-                      </ul>
+                          <li>
+                            <i className="far fa-money-bill-alt" /> ${" "}
+                            {doctor && doctor.consultationFees}{" "}
+                            <i
+                              className="feather-info"
+                              data-bs-toggle="tooltip"
+                              title="Lorem Ipsum"
+                            />{" "}
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
-                  <div style={{width:"100%",flex:"auto",maxWidth:"530px"}} className="doc-info-right">
+                  <div
+                    style={{ width: "100%", flex: "auto", maxWidth: "530px" }}
+                    className="doc-info-right"
+                  >
                     <div className="clini-infos">
-                      
                       <h4 style={{ margin: "25px 0" }} className="doc-name">
                         Consultation Hours :{" "}
                         <strong className="text-success">9am - 5pm</strong>

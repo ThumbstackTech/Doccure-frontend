@@ -4,6 +4,8 @@ import axios from "../../utils/axios";
 import { setToken } from "../../actions/setToken";
 import { setBookmark } from "../../actions/setBookmark";
 import { toast } from "react-toastify";
+import { userAppointments } from "../../actions/userAppointments";
+// import { appointments } from "../../actions/appointments";
 
 export const useRegisterUser = () => {
   const dispatch = useDispatch();
@@ -86,4 +88,27 @@ export const useBookmarkDoc = () => {
   };
 
   return bookmarkDoc;
+};
+// user//get-appointments
+
+export const useUserAppointments = () => {
+  const dispatch = useDispatch();
+
+  const userAllAppointments = async (data) => {
+    console.log("user app hook", data);
+    try {
+      let appoint = await axios.post("/api/user/get-appointments", data);
+      console.log("user app res", appoint.data);
+      dispatch(userAppointments(appoint.data));
+      // toast.success("Bookmarked");
+      //   dispatch(setToken(user.data.user.jwt));
+      return appoint.data;
+    } catch (error) {
+      console.log("in all appp user", error);
+      // toast.error("Error Occuredin all app");
+      return false;
+    }
+  };
+
+  return userAllAppointments;
 };

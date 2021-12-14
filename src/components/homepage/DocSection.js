@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
+// import { userAppointments } from "../../actions/userAppointments";
 // import { useParams } from "react-router";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
 import { DoctorCard } from "./DoctorCard";
 
 export const DocSection = ({ docData }) => {
+  const userAppointment = useSelector((state) => state.userAppointments);
+  console.log("doctor section", userAppointment);
   // const [doctorid, setDoctor] = useState('');
   // const [userid, setUser] = useState('');
 
@@ -46,8 +50,14 @@ export const DocSection = ({ docData }) => {
               <div className="our-doctor">
                 <div className="row">
                   {docData.length > 0 &&
-                    docData.map((doc) => {
-                      return <DoctorCard doctor={doc} />;
+                    docData.map((doc, index) => {
+                      return (
+                        <DoctorCard
+                          item={index}
+                          doctor={doc}
+                          Appointment={userAppointment[index]}
+                        />
+                      );
                     })}
                 </div>
               </div>

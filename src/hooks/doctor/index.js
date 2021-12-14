@@ -187,7 +187,7 @@ export const useMarkConsulted = () => {
       //   return doctor.data;
       //   dispatch(setToken(user.data.token));
     } catch (error) {
-      console.log(error);
+      console.log("mark consulted", error);
       toast.error("Error Occured");
     }
   };
