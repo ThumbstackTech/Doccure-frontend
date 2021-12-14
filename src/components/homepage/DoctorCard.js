@@ -18,7 +18,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
     userAppointment[item],
     item
   );
-  console.log("token details", userAppointment[0].doctorId, doctor.doctorId);
+  // console.log("token details", userAppointment[0].doctorId, doctor.doctorId);
 
   useEffect(() => {
     // const appointed = userAppointment.filter((app) => {
