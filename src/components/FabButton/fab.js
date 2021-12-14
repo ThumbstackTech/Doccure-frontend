@@ -61,24 +61,35 @@ export const Fab = ({ userAllAppointment, item }) => {
         onClick={() => {
           $(".fab").removeClass("active");
           $("#overlay").removeClass("dark-overlay");
-          $("#loadicon").css("display", "block");
+          $(".loadicon").css("display", "block");
           $(".outerDiv").css("width", "auto");
           $(".outerDiv").css("height", "auto");
           $(".outerDiv").css("top", "40%");
         }}
       ></div>
       <div
-        class="fab"
+        id="fab"
+        className={"fab "+userAllAppointment.doctor.doctorId}
         onClick={() => {
-          $(".fab").addClass("active");
+          $('.fab.'+userAllAppointment.doctor.doctorId).addClass('active');
           $("#overlay").addClass("dark-overlay");
-          $("#loadicon").css("display", "none");
+          $(".loadicon."+userAllAppointment.doctor.doctorId).css("display", "none");
           $(".outerDiv").css("width", "100%");
           $(".outerDiv").css("height", "100%");
           $(".outerDiv").css("top", "auto");
         }}
+        // {...Array.from($('#fab')).forEach(element =>{
+        //   element.addEventListener('click',()=>{
+        //     $("#fab").addClass("active");
+        //     $("#overlay").addClass("dark-overlay");
+        //     $("#loadicon").css("display", "none");
+        //     $(".outerDiv").css("width", "100%");
+        //     $(".outerDiv").css("height", "100%");
+        //     $(".outerDiv").css("top", "auto");
+        //   });
+        // })}
       >
-        <img id="loadicon" style={{ position: "absolute" }} src={icon} alt="" />
+        <img id="loadicon" className={"loadicon "+userAllAppointment.doctor.doctorId} style={{ position: "absolute" }} src={icon} alt="" />
         <h1 style={{ fontSize: "20px" }}>
           {consultedappointments && consultedappointments.length}
         </h1>
