@@ -182,7 +182,7 @@ export const useMarkConsulted = () => {
     try {
       let doctor = await axios.post("/api/doctor/consulted-appointment", data);
       console.log("doc consulted ", doctor.data);
-      dispatch(consultedappointments(doctor.data.appointment));
+      dispatch(consultedappointments(doctor.data));
       toast.success("Consulted");
       //   return doctor.data;
       //   dispatch(setToken(user.data.token));

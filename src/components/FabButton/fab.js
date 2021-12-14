@@ -13,7 +13,7 @@ import {
 
 // import axios from 'axios';
 
-export const Fab = ({ userAllAppointment }) => {
+export const Fab = ({ userAllAppointment, item }) => {
   const userAllAppointments = useUserAppointments();
   // const doctorAppointment = useDoctorAppointments();
   const doctorAppointment = useDoctorAppointments();
@@ -47,9 +47,9 @@ export const Fab = ({ userAllAppointment }) => {
     console.log("today", date);
     const userId = onlineUser.userId;
     let data = { userId, date };
-    await userAllAppointments(data);
+    // await userAllAppointments(data);
     let doctorId = userAllAppointment.appointment.doctorId;
-    console.log("user allappres", userAllAppointment.appointment);
+    console.log("user allappres", userAllAppointment.doctor.appointments);
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
   };

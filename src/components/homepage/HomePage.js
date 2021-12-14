@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDoctorByLocation } from "../../hooks/doctor";
 import SearchDoc from "./SearchDoc";
+import { useSelector } from "react-redux";
 import { SignupPageFooter } from "../forms/SignupPageFooter";
 import { SignupPageHeader } from "../forms/SignupPageHeader";
 import { Fab } from "../FabButton/fab";
@@ -11,6 +12,7 @@ export const HomePage = () => {
   const [userAppoint, setAppoint] = useState([]);
   const doctorByLocation = useDoctorByLocation();
   const userAllAppointments = useUserAppointments();
+  const userAppointment = useSelector((state) => state.userAppointments);
   useEffect(() => {
     onSearch(); // eslint-disable-next-line
   }, []);
@@ -80,9 +82,9 @@ export const HomePage = () => {
     <>
       <div className="outerDiv">
         {/* {userAppoint && <Fab />} */}
-        {userAppoint.length > 0 &&
-          userAppoint.map((app) => {
-            return <Fab userAllAppointment={app} />;
+        {userAppointment.length > 0 &&
+          userAppointment.map((app, index) => {
+            return <Fab userAllAppointment={app} item={index} />;
           })}
       </div>
       <div className="main-wrapper">

@@ -96,7 +96,7 @@ export const RegisterMain = () => {
                     <div class="login-header">
                       <h3>
                         Patient Register{" "}
-                        <a href="doctor-register.html">Are you a Doctor?</a>
+                        <a href="/doctorlogin">Are you a Doctor?</a>
                       </h3>
                     </div>
 
@@ -156,9 +156,9 @@ export const RegisterMain = () => {
                       </div>
                       <div class="form-group">
                         <div class="text-start">
-                          <a class="forgot-link" href="login.html">
+                          {/* <a class="forgot-link" href="login.html">
                             Already have an account?
-                          </a>
+                          </a> */}
                         </div>
                       </div>
                       <button

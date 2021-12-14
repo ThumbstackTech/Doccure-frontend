@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import DocFooter from "../doctorapp/forms/DocFooter";
-import TokenHeader from "./TokenHeader";
+// import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import {
   // useConsultedAppointment,
   useFetchAppointment,
 } from "../../hooks/doctor";
+import SignupPageHeader from "../forms/SignupPageHeader";
 
 export const TokenBooking = () => {
   const { appointmentId, doctorId } = useParams();
@@ -77,7 +78,8 @@ export const TokenBooking = () => {
   return (
     <>
       <div className="main-wrapper">
-        <TokenHeader />
+        <SignupPageHeader />
+        {/* <TokenHeader /> */}
 
         <div className="breadcrumb-bar">
           <div className="container-fluid">

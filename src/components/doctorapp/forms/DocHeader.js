@@ -50,9 +50,9 @@ export const DocHeader = () => {
             </div>
             <ul className="main-nav">
               <li>
-                <a href="/doctordashboard">
+                {/* <a href="/doctordashboard">
                   <i className="fas fa-plus" /> Doctor Dashboard
-                </a>
+                </a> */}
               </li>
               <li className="login-link">
                 <a href="/doctorlogin">Login / Register</a>

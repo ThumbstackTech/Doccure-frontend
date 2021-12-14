@@ -35,7 +35,7 @@ export const DocDashboard = () => {
   console.log("doctor consulted", consultedappointments);
   useEffect(() => {
     fetchDoctor(); // eslint-disable-next-line
-  }, [appointments]);
+  }, []);
 
   const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
@@ -63,17 +63,26 @@ export const DocDashboard = () => {
   };
 
   const nextToken = async () => {
+    let today = new Date(),
+      date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
     const notConsulted = appointments.filter((app) => {
       return !consultedappointments.find(
         (consulted) => consulted.appointmentId === app.appointmentId
       );
     });
+    let onlineUser = JSON.parse(localStorage.getItem("user"));
     let appointmentId = notConsulted[0].appointmentId;
-
+    let doctorId = onlineUser.doctorId;
     console.log("doctor next ", notConsulted[0].appointmentId);
     // console.log("next data", data);
     // console.log("next ", notConsulted);
-    await markConsulted({ appointmentId });
+    await markConsulted({ appointmentId, date });
+    await consultedAppointment({ doctorId, date });
   };
   return (
     <>
@@ -145,7 +154,8 @@ export const DocDashboard = () => {
                                   Total Patients In Queue
                                 </h6>
                                 <div className="dash-widget-count">
-                                  <h3>{appointments && appointments.length}</h3>
+                                  <h3>{left}</h3>
+                                  {/* <h3>{appointments && appointments.length}</h3> */}
                                 </div>
                               </div>
                             </div>
@@ -192,26 +202,27 @@ export const DocDashboard = () => {
                   <div className="col-md-12">
                     <h4 className="sub-heading">Manage Patients</h4>
                     <div className="appointment-tab">
-                    <div className="clini-infos">
-                      
-                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        Patient Name :{" "}
-                        <strong className="text-success">XYZ</strong>
-                      </h4>
-                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        Patient Age -{" "}
-                        <strong>
-                          25
-                        </strong>
-                      </h4>
-                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        Patient Gender -{" "}
-                        <strong>
-                          Male
-                        </strong>
-                      </h4>
-                     
-                    </div>
+                      <div className="clini-infos">
+                        <h4
+                          style={{ margin: "25px 25px" }}
+                          className="doc-name"
+                        >
+                          Patient Name :{" "}
+                          <strong className="text-success">XYZ</strong>
+                        </h4>
+                        <h4
+                          style={{ margin: "25px 25px" }}
+                          className="doc-name"
+                        >
+                          Patient Age - <strong>25</strong>
+                        </h4>
+                        <h4
+                          style={{ margin: "25px 25px" }}
+                          className="doc-name"
+                        >
+                          Patient Gender - <strong>Male</strong>
+                        </h4>
+                      </div>
                       <ul
                         style={{ justifyContent: "center" }}
                         className="nav nav-tabs nav-tabs-solid"
