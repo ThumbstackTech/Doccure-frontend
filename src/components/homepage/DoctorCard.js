@@ -8,6 +8,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(doctor.isBookmarked);
+  const user = useSelector((state) => state.setUser);
   const bookmarkDoc = useBookmarkDoc();
   // console.log("doctor card bookmarked", bookmark);
   // const doctorId = doctor.doctorId;
@@ -98,13 +99,15 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               </li>
             </ul>
             <div className="profile-btn-list">
-              {Appointment &&
+              {user &&
+              Appointment &&
               Appointment.appointment.doctorId === doctor.doctorId ? (
                 // userAppointment &&
                 // Appointment.appointment.doctorId === doctor.doctorId
                 <Link
                   // to="/docpro1"
-                  to={`/tokenbooking/${doctor.doctorId}/${Appointment.appointmentId}`}
+                  to={`/tokenbooking/${doctor.doctorId}`}
+                  // to={`/tokenbooking/${doctor.doctorId}/${Appointment.appointmentId}`}
                   // to={`/docpro1/${doctor.doctorId}`}
                   id={"001"}
                   className="btn book-btn"

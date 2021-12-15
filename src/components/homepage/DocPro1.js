@@ -28,6 +28,8 @@ export const DocPro1 = () => {
   // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const createToken = useSelector((state) => state.createToken);
+  const userAppointment = useSelector((state) => state.userAppointments);
+  console.log("user app", userAppointment);
 
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
@@ -35,10 +37,24 @@ export const DocPro1 = () => {
 
   console.log("individual doc appointments", appointments);
   console.log("doc consulted appointments", consultedappointments);
-  console.log("createToken", createToken);
+  console.log("createToken before", createToken.appointmentId);
   let appointmentId = createToken && createToken.appointmentId;
+
   // const [doctor, setDoctor] = useState("");
   const [user, setuser] = useState("");
+  // const [haveAppointmet, setHaveAppointmet] = useState("");
+  // if (user) {
+  //   const appointed = appointments.filter((app) => {
+  //     return appointments.find((app) => app.userId === user.userId);
+  //   });
+  //   // let appointed = setHaveAppointmet(
+  //   //   appointments && appointments.filter(appointments.userId === user.userId)
+  //   // );
+  //   // let appointed = appointments && appointments.includes(user.userId);
+  //   console.log("doctor appointed ", appointed);
+  // }
+  // console.log("haveAppointmet", haveAppointmet);
+
   useEffect(() => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     if (onlineUser) {
@@ -48,6 +64,7 @@ export const DocPro1 = () => {
       onlineUser = "";
       setuser(onlineUser);
     }
+
     fetchDoctor(); // eslint-disable-next-line
   }, [doctorId]);
 
@@ -65,14 +82,13 @@ export const DocPro1 = () => {
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
+
     // const appointed = appointments.filter((app) => {
     //   return userAppointment.find(
     //     (doctorapp) => userAppointment.doctorId === app.doctorId
     //   );
     // });
     // let appointmentId = notConsulted[0].appointmentId;
-
-    // console.log("doctor appointed ", appointed);
   };
 
   const bookAppointment = async () => {
@@ -88,8 +104,10 @@ export const DocPro1 = () => {
     console.log("create app", data);
     await createAppointment(data);
     console.log("create tokena after appointment", createToken);
+    console.log("create tokena idappointment", appointmentId);
     // dispatch(setToken(""));
-    navigate(`/tokenbooking/${doctorId}/${appointmentId}`);
+    // navigate(`/tokenbooking/${doctorId}/${appointmentId}`);
+    navigate(`/tokenbooking/${doctorId}`);
     // to={`/docpro1/${doctor.doctorId}`}
   };
   return (

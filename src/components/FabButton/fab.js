@@ -3,7 +3,7 @@ import "./fab.css";
 import $ from "jquery";
 import { useSelector } from "react-redux";
 import icon from "../../icons/icons8-circular-arrows-50.png";
-import { useUserAppointments } from "../../hooks/user";
+// import { useUserAppointments } from "../../hooks/user";
 import {
   // useDoctorDetails,
   useDoctorAppointments,
@@ -14,7 +14,7 @@ import {
 // import axios from 'axios';
 
 export const Fab = ({ userAllAppointment, item }) => {
-  const userAllAppointments = useUserAppointments();
+  // const userAllAppointments = useUserAppointments();
   // const doctorAppointment = useDoctorAppointments();
   const doctorAppointment = useDoctorAppointments();
   const consultedAppointment = useConsultedAppointment();
@@ -33,10 +33,10 @@ export const Fab = ({ userAllAppointment, item }) => {
   console.log("appointments", appointments);
   console.log("fab appointments", userAllAppointment);
   useEffect(() => {
-    getuserAppointments(); // eslint-disable-next-line
+    // getuserAppointments(); // eslint-disable-next-line
   }, []);
   const getuserAppointments = async () => {
-    let onlineUser = JSON.parse(localStorage.getItem("user"));
+    // let onlineUser = JSON.parse(localStorage.getItem("user"));
     let today = new Date(),
       date =
         today.getFullYear() +
@@ -45,13 +45,21 @@ export const Fab = ({ userAllAppointment, item }) => {
         "-" +
         today.getDate();
     console.log("today", date);
-    const userId = onlineUser.userId;
-    let data = { userId, date };
+    // const userId = onlineUser.userId;
+    // let data = { userId, date };
     // await userAllAppointments(data);
     let doctorId = userAllAppointment.appointment.doctorId;
-    console.log("user allappres", userAllAppointment.doctor.appointments);
+    console.log("user allappres", userAllAppointment.doctor.doctorName);
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
+  };
+  const getIntials = (name) => {
+    let a = name.split(" ");
+    let c = "";
+    for (let i = 0; i < a.length; i++) {
+      c = c + a[i][0];
+    }
+    return c.toUpperCase();
   };
   return (
     <>
@@ -59,7 +67,7 @@ export const Fab = ({ userAllAppointment, item }) => {
       <div
         id="overlay"
         onClick={() => {
-          $(".fab").removeClass("active");
+          $(".fab").removeClass("activee");
           $("#overlay").removeClass("dark-overlay");
           $(".loadicon").css("display", "block");
           $(".outerDiv").css("width", "auto");
@@ -69,11 +77,15 @@ export const Fab = ({ userAllAppointment, item }) => {
       ></div>
       <div
         id="fab"
-        className={"fab "+userAllAppointment.doctor.doctorId}
+        className={"fab " + userAllAppointment.doctor.doctorId}
         onClick={() => {
-          $('.fab.'+userAllAppointment.doctor.doctorId).addClass('active');
+          getuserAppointments();
+          $(".fab." + userAllAppointment.doctor.doctorId).addClass("activee");
           $("#overlay").addClass("dark-overlay");
-          $(".loadicon."+userAllAppointment.doctor.doctorId).css("display", "none");
+          $(".loadicon." + userAllAppointment.doctor.doctorId).css(
+            "display",
+            "none"
+          );
           $(".outerDiv").css("width", "100%");
           $(".outerDiv").css("height", "100%");
           $(".outerDiv").css("top", "auto");
@@ -89,9 +101,19 @@ export const Fab = ({ userAllAppointment, item }) => {
         //   });
         // })}
       >
-        <img id="loadicon" className={"loadicon "+userAllAppointment.doctor.doctorId} style={{ position: "absolute" }} src={icon} alt="" />
+        <img
+          id="loadicon"
+          className={"loadicon " + userAllAppointment.doctor.doctorId}
+          style={{ position: "absolute" }}
+          src={icon}
+          alt=""
+        />
+        {/* <h1 style={{ fontSize: "20px" }}>
+          {userAllAppointment.doctor.doctorName}
+          {/* {consultedappointments && consultedappointments.length} */}
+        {/* </h1>  */}
         <h1 style={{ fontSize: "20px" }}>
-          {consultedappointments && consultedappointments.length}
+          {getIntials(userAllAppointment.doctor.doctorName)}
         </h1>
         <div className="drname">
           <h2>Dr. {userAllAppointment.doctor.doctorName}</h2>
@@ -102,7 +124,8 @@ export const Fab = ({ userAllAppointment, item }) => {
               Total Patients In Queue
             </h6>
             <div className="dash-widget-count">
-              <h3>{appointments && appointments.length}</h3>
+              {/* <h3>{appointments && appointments.length}</h3> */}
+              <h3>{left}</h3>
             </div>
           </div>
           <div className="dash-widget-info">

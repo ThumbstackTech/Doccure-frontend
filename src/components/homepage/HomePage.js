@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDoctorByLocation } from "../../hooks/doctor";
 import SearchDoc from "./SearchDoc";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import { useUserAppointments } from "../../hooks/user";
 
 export const HomePage = () => {
   // const [user, setUser] = useState("");
-  const [userAppoint, setAppoint] = useState([]);
+  // const [userAppoint, setAppoint] = useState([]);
   const doctorByLocation = useDoctorByLocation();
   const userAllAppointments = useUserAppointments();
   const userAppointment = useSelector((state) => state.userAppointments);
@@ -35,9 +35,9 @@ export const HomePage = () => {
     // let data = { userId, date };
     let allappres = await userAllAppointments({ userId, date });
     console.log("all app", allappres);
-    if (allappres) {
-      setAppoint(allappres);
-    }
+    // if (allappres) {
+    //   setAppoint(allappres);
+    // }
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log(position.coords.latitude, "latitude");
       console.log(position.coords.longitude, "longitude");

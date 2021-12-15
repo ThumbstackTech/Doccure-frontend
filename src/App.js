@@ -32,10 +32,11 @@ const App = () => {
         <Route path="/docpro1/:doctorId" element={<DocPro1 />} />
 
         <Route path="/bookmark" element={<FavourPage />} />
-        <Route
+        <Route path="/tokenbooking/:doctorId" element={<TokenBooking />} />
+        {/* <Route
           path="/tokenbooking/:doctorId/:appointmentId"
           element={<TokenBooking />}
-        />
+        /> */}
         <Route path="/signuppage" element={<SignupPage />} />
         <Route path="/registerpage" element={<RegisterPage />} />
         <Route exact path="/doctorlogin" element={<DocLogin />} />

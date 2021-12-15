@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   z-index: 100;
   right: 0;
   top: 40%;
@@ -56,7 +56,7 @@
   font-family: "Segoe UI";
 }
 
-.active {
+.activee {
   cursor: default;
   background: #fff;
   border-radius: 10px;
@@ -92,11 +92,11 @@
   }
 }
 
-.active .fab-icon {
+.activee .fab-icon {
   display: none;
 }
 
-.active .protect {
+.activee .protect {
   background: none;
 }
 
@@ -107,7 +107,7 @@
   font-family: "Segoe UI";
 }
 
-.active .cntt-wrapper {
+.activee .cntt-wrapper {
   display: block;
 }
 
@@ -120,7 +120,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
-.active .drname {
+.activee .drname {
   display: flex;
   justify-content: center;
 }
