@@ -31,7 +31,7 @@ export const HomePage = () => {
         "-" +
         today.getDate();
     console.log("today", date);
-    const userId = onlineUser.userId;
+    const userId = onlineUser && onlineUser.userId;
     // let data = { userId, date };
     let allappres = await userAllAppointments({ userId, date });
     console.log("all app", allappres);
