@@ -3,13 +3,13 @@ Author       : Dreamguys
 Template Name: Doccure - Bootstrap Template
 Version      : 1.3
 */
-var otp = document.getElementById("otp");
-var otpbox = document.getElementById("otpbox");
-otp.addEventListener('click',hideotp)
-function hideotp(e) {
-	e.preventDefault();
-	otpbox.style.display="block";
-}
+// var otp = document.getElementById("otp");
+// var otpbox = document.getElementById("otpbox");
+// otp.addEventListener('click',hideotp)
+// function hideotp(e) {
+// 	e.preventDefault();
+// 	otpbox.style.display="block";
+// }
 
 (function($) {
     "use strict";

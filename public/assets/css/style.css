@@ -12775,6 +12775,9 @@ ul.benifits-col li i {
   .category-col:after {
     bottom: 15px;
   }
+  .header .main-nav .login-link{
+    display: block;
+  }
 }
 @media only screen and (max-width: 849.98px) {
   .row.row-grid > div {
@@ -13952,6 +13955,9 @@ ul.benifits-col li i {
     min-width: auto;
     line-height: 50px;
     font-size: 15px;
+  }
+  .header .main-nav .nav-item{
+    display: none;
   }
 }
 
