@@ -9478,9 +9478,10 @@ body .multi-optn {
   display: -ms-flexbox;
   display: flex;
   text-align: left;
+  flex-direction: column;
 }
 .profile-info-widget .booking-doc-img {
-  margin-right: 15px;
+  /* margin-right: 15px; */
 }
 .profile-info-widget .booking-doc-img img {
   border-radius: 4px;
@@ -9763,8 +9764,9 @@ body .multi-optn {
 }
 .widget-profile .profile-info-widget .booking-doc-img img {
   border-radius: 8px;
-  height: 76px;
-  width: 76px;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
 }
 .appointments-detail .pro-widget-content {
   border-bottom: 0;
