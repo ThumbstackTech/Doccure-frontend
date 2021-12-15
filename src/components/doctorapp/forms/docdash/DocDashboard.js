@@ -124,7 +124,7 @@ export const DocDashboard = () => {
                       <div className="profile-det-info">
                         <h3>Dr. {doctor && doctor.doctorName}</h3>
                         <div className="patient-details">
-                          <h5 className="mb-0">
+                          <h5 className="mb-2">
                             {doctor &&
                               doctor.specialization &&
                               doctor.specialization.map((spez) => {
@@ -202,7 +202,7 @@ export const DocDashboard = () => {
                   <div className="col-md-12">
                     <h4 className="sub-heading">Manage Patients</h4>
                     <div className="appointment-tab">
-                      <div className="clini-infos">
+                      {/* <div className="clini-infos">
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
@@ -222,7 +222,11 @@ export const DocDashboard = () => {
                         >
                           Patient Gender - <strong>Male</strong>
                         </h4>
-                      </div>
+                      </div> */}
+                      <h4 style={{ margin: "25px 25px" }} className="doc-name">
+                        After successfull checkup press Next Patient to call the next patient in Queue
+                        
+                      </h4>
                       <ul
                         style={{ justifyContent: "center" }}
                         className="nav nav-tabs nav-tabs-solid"
@@ -238,7 +242,7 @@ export const DocDashboard = () => {
                         </li> */}
                         <li className="nav-item">
                           <button
-                            style={{ borderRadius: "7px", padding: "10px" }}
+                            style={{ borderRadius: "7px", padding: "10px 50px" }}
                             type="button"
                             className="btn btn-success"
                             onClick={nextToken}
