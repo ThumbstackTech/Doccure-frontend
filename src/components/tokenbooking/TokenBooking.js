@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import SignupPageFooter from "../forms/SignupPageFooter";
 import {
-  // useDoctorDetails,
+  useDoctorDetails,
   useDoctorAppointments,
   // useConsultedAppointment,
   useFetchAppointment,
@@ -16,7 +16,7 @@ import SignupPageHeader from "../forms/SignupPageHeader";
 
 export const TokenBooking = () => {
   const { appointmentId, doctorId } = useParams();
-  // const doctorById = useDoctorDetails();
+  const doctorById = useDoctorDetails();
   const doctorAppointment = useDoctorAppointments();
   // const consultedAppointment = useConsultedAppointment();
   const fetchAppointment = useFetchAppointment();
@@ -70,7 +70,7 @@ export const TokenBooking = () => {
         today.getDate();
     console.log("today", date);
 
-    // await doctorById({ doctorId });
+    await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     // await consultedAppointment({ doctorId, date });
   };
