@@ -4,30 +4,34 @@ import { useBookmarkDoc } from "../../hooks/user";
 import { useSelector } from "react-redux";
 
 export const DoctorCard = ({ doctor, item, Appointment }) => {
-  console.log("doctor card props", Appointment && Appointment.appointment);
+  console.log("doctor card props", Appointment[item]);
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(doctor.isBookmarked);
+  const [alreadyBooked, setAlreadyBooked] = useState(doctor.isBookmarked);
   const user = useSelector((state) => state.setUser);
   const bookmarkDoc = useBookmarkDoc();
   // console.log("doctor card bookmarked", bookmark);
   // const doctorId = doctor.doctorId;
 
   console.log(
-    "uu appointed",
+    "doctor  appointed",
 
-    userAppointment[item],
-    item
+    userAppointment
   );
   // console.log("token details", userAppointment[0].doctorId, doctor.doctorId);
 
   useEffect(() => {
-    // const appointed = userAppointment.filter((app) => {
-    //   return userAppointment.find(
-    //     () => userAppointment.doctorId === doctorId
+    // const notConsulted = appointments.filter((app) => {
+    //   return !consultedappointments.find(
+    //     (consulted) => consulted.appointmentId === app.appointmentId
     //   );
     // });
-    // let appointmentId = notConsulted[0].appointmentId;
+    const tokenBooked = userAppointment.find(
+      (token) => token.appointment.doctorId === doctor.doctorId
+    );
+    console.log("token booked,", tokenBooked);
+    setAlreadyBooked(tokenBooked);
   }, []);
   // const addBookmark = async (doctorId, bookmark) => {
   const addBookmark = async (doctorId, bookmark) => {
@@ -99,9 +103,9 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               </li>
             </ul>
             <div className="profile-btn-list">
-              {user &&
-              Appointment &&
-              Appointment.appointment.doctorId === doctor.doctorId ? (
+              {user && alreadyBooked ? (
+                // &&
+                // alreadyBooked.appointment.doctorId === doctor.doctorId
                 // userAppointment &&
                 // Appointment.appointment.doctorId === doctor.doctorId
                 <Link

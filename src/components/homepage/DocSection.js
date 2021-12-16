@@ -55,7 +55,7 @@ export const DocSection = ({ docData }) => {
                         <DoctorCard
                           item={index}
                           doctor={doc}
-                          Appointment={userAppointment[index]}
+                          Appointment={userAppointment}
                         />
                       );
                     })}

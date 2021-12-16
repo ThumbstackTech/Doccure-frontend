@@ -15,7 +15,7 @@ export const HomePage = () => {
   const userAppointment = useSelector((state) => state.userAppointments);
   useEffect(() => {
     onSearch(); // eslint-disable-next-line
-  }, [userAppointment]);
+  }, []);
   // let details;
   const onSearch = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
