@@ -11,6 +11,7 @@ import {
   useConsultedAppointment,
   useMarkConsulted,
 } from "../../../../hooks/doctor";
+import $ from "jquery";
 
 export const DocDashboard = () => {
   // const navigate = useNavigate();
@@ -83,6 +84,16 @@ export const DocDashboard = () => {
     // console.log("next ", notConsulted);
     await markConsulted({ appointmentId, date });
     await consultedAppointment({ doctorId, date });
+  };
+
+  const showPatientDetails = () => {
+    if ($('.clini-infos').css('display')=="none") {
+      $('.clini-infos').css('display','block')
+      $('.showHide').text('Hide Patient Details')
+    } else {
+      $('.clini-infos').css('display','none')
+      $('.showHide').text('Show Patient Details')
+    }
   };
   return (
     <>
@@ -204,7 +215,7 @@ export const DocDashboard = () => {
                       Manage Patients
                     </h4>
                     <div className="appointment-tab">
-                      {/* <div className="clini-infos">
+                      <div style={{display:"none"}} className="clini-infos">
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
@@ -224,10 +235,28 @@ export const DocDashboard = () => {
                         >
                           Patient Gender - <strong>Male</strong>
                         </h4>
-                      </div> */}
+                      </div>
+                      <ul
+                        style={{paddingBottom:"0px",justifyContent: "center" }}
+                        className="nav nav-tabs nav-tabs-solid"
+                      >
+                        <li className="nav-item">
+                            <button
+                              style={{
+                                borderRadius: "7px",
+                                cursor:"pointer" 
+                              }}
+                              type="button"
+                              className="showHide btn btn-primary"
+                              onClick={showPatientDetails}
+                            >
+                              Show Patient Details
+                            </button>
+                        </li>
+                      </ul>
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        After successfull checkup press Next Patient to call the
-                        next patient in Queue
+                        <i>After successfull checkup press Next Patient to call the
+                        next patient in Queue</i>
                       </h4>
                       <ul
                         style={{ justifyContent: "center" }}
