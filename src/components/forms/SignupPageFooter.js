@@ -47,12 +47,20 @@ export const SignupPageFooter = () => {
                   <h2 className="footer-title">For Patients</h2>
                   <ul>
                     <li>
-                      <a href={onlineUser.userId ? "/" : "/signuppage"}>
+                      <a
+                        href={
+                          onlineUser && onlineUser.userId ? "/" : "/signuppage"
+                        }
+                      >
                         Login
                       </a>
                     </li>
                     <li>
-                      <a href={onlineUser.userId ? "/" : "/signuppage"}>
+                      <a
+                        href={
+                          onlineUser && onlineUser.userId ? "/" : "/signuppage"
+                        }
+                      >
                         Register
                       </a>
                     </li>
