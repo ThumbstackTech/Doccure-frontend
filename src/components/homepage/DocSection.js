@@ -45,7 +45,6 @@ export const DocSection = ({ docData }) => {
                 <h2>
                   Doctors <span>Nearby You</span>
                 </h2>
-                ;
               </div>
               <div className="our-doctor">
                 <div className="row">
