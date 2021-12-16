@@ -80,16 +80,16 @@ export const TokenBooking = () => {
   useEffect(() => {
     var count = 10;
     const timer = setInterval(() => {
-        if (count >= 0) {
-            if (count == 0) {
-              $(".count").text(`${count} secs`);
-                window.location="/homepage"
-            } else {
-                $(".count").text(`${count - 1} secs`);
-                $(".count").css("transition","all 1s ease");
-            }
-          }
-          count--;
+      if (count >= 0) {
+        if (count === 0) {
+          $(".count").text(`${count} secs`);
+          window.location = "/homepage";
+        } else {
+          $(".count").text(`${count - 1} secs`);
+          $(".count").css("transition", "all 1s ease");
+        }
+      }
+      count--;
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
@@ -224,8 +224,8 @@ export const TokenBooking = () => {
                     Delete Token
                   </a> */}
 
-                  <p style={{margin:"50px 0"}} class="logout-section">
-                      Redirecting to homepage in <b class="count">10 secs</b>.
+                  <p style={{ margin: "50px 0" }} class="logout-section">
+                    Redirecting to homepage in <b class="count">10 secs</b>.
                   </p>
 
                   <Link
