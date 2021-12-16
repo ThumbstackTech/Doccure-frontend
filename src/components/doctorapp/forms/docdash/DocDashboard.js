@@ -200,7 +200,7 @@ export const DocDashboard = () => {
                 </div>
                 <div className="row">
                   <div className="col-md-12">
-                    <h4 className="sub-heading">Manage Patients</h4>
+                    <h4 style={{fontSize:"25px"}} className="sub-heading">Manage Patients</h4>
                     <div className="appointment-tab">
                       {/* <div className="clini-infos">
                         <h4
