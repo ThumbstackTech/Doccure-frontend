@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
@@ -10,21 +10,32 @@ import {
   // useCreateAppointments,
   useConsultedAppointment,
   useMarkConsulted,
+  useNonConsultedAppointment,
 } from "../../../../hooks/doctor";
+import { useUserByAppointmnet } from "../../../../hooks/user";
 
 export const DocDashboard = () => {
   // const navigate = useNavigate();
-  // const [user, setuser] = useState("");
+
   const doctorById = useDoctorDetails();
+  const userByAppointment = useUserByAppointmnet();
   const doctorAppointment = useDoctorAppointments();
   // const createAppointment = useCreateAppointments();
   const consultedAppointment = useConsultedAppointment();
+  const nonConsultedAppointment = useNonConsultedAppointment();
   const markConsulted = useMarkConsulted();
   const doctor = useSelector((state) => state.setDoctor);
   // const doctor = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
+  );
+  const nonConsultedappointments = useSelector(
+    (state) => state.nonConsultedappointments
+  );
+  const [notConsultedpat, setNotConsulted] = useState(
+    consultedappointments &&
+      consultedappointments[consultedappointments.length - 1]
   );
   let current = consultedappointments.length;
 
@@ -33,19 +44,17 @@ export const DocDashboard = () => {
   console.log("doctor dash", doctor);
   console.log("doctor appoint", appointments);
   console.log("doctor consulted", consultedappointments);
+  console.log("doctor nonconsulted", nonConsultedappointments);
+
   useEffect(() => {
-    fetchDoctor(); // eslint-disable-next-line
-  }, [appointments]);
+    fetchDoctor();
+
+    // eslint-disable-next-line
+  }, []);
 
   const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
-    // if (onlineUser) {
-    //   // onlineUser = onlineUser;
-    //   setuser(onlineUser);
-    // } else {
-    //   onlineUser = "";
-    //   setuser(onlineUser);
-    // }
+
     let doctorId = onlineUser.doctorId;
     // let data = doctorId;
     // let date = Date();
@@ -60,6 +69,14 @@ export const DocDashboard = () => {
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
+    await nonConsultedAppointment({ doctorId, date });
+    console.log("non patient info appoint", nonConsultedappointments);
+
+    // let appointmentId = notConsultedpat && notConsultedpat.appointmentId;
+    // let patientinfo = await userByAppointment({ appointmentId });
+    // console.log("patient info appoint", consultedappointments);
+
+    // fetchPatient();
   };
 
   const nextToken = async () => {
@@ -75,15 +92,55 @@ export const DocDashboard = () => {
         (consulted) => consulted.appointmentId === app.appointmentId
       );
     });
-    let onlineUser = JSON.parse(localStorage.getItem("user"));
     let appointmentId = notConsulted[0].appointmentId;
+    let onlineUser = JSON.parse(localStorage.getItem("user"));
     let doctorId = onlineUser.doctorId;
     console.log("doctor next ", notConsulted[0].appointmentId);
+
     // console.log("next data", data);
     // console.log("next ", notConsulted);
     await markConsulted({ appointmentId, date });
     await consultedAppointment({ doctorId, date });
   };
+  // console.log("patient info", notConsultedpat);
+  const fetchPatient = async () => {
+    // let appointmentId =
+    //   nonConsultedAppointment[0] && nonConsultedAppointment[0].appointmentId;
+    // let patientinfo = await nonConsultedAppointment({ appointmentId });
+    console.log("non patient info appoint", nonConsultedAppointment[0]);
+    // setNotConsulted(notConsulted[0].appointmentId);
+    // let patientinfo = await userByAppointment({ appointmentId });
+    // console.log("patient info appoint", patientinfo);
+    // await consultedAppointment({ doctorId, date });
+    // let cf =
+    //   appointments.length > -1 &&
+    //   appointments.filter((app) => {
+    //     return !app.consulted;
+    //   });
+    // console.log("cf", cf);
+    // fetchPatient();
+    // const notConsulted =
+    //   appointments &&
+    //   consultedappointments &&
+    //   appointments.filter((app) => {
+    //     return !consultedappointments.find(
+    //       (consulted) => consulted.appointmentId === app.appointmentId
+    //     );
+    //   });
+    // console.log("doctor notConsulted", notConsulted);
+    // let appointmentId =
+    //   nonConsultedappointments && nonConsultedappointments.appointmentId;
+    // let patientinfo = await userByAppointment({ appointmentId });
+    // console.log("patient info appoint", patientinfo);
+    // if (notConsulted[0]) {
+    //   let appointmentId = notConsulted[0] && notConsulted[0].appointmentId;
+    //   let patientinfo = await userByAppointment({ appointmentId });
+    //   console.log("patient info appoint", patientinfo);
+    // }
+    // let appointmentId = notConsulted[0].appointmentId;
+  };
+
+  // setNotConsulted(cf);
   return (
     <>
       <div className="main-wrapper">
@@ -204,7 +261,7 @@ export const DocDashboard = () => {
                       Manage Patients
                     </h4>
                     <div className="appointment-tab">
-                      {/* <div className="clini-infos">
+                      <div className="clini-infos">
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
@@ -224,7 +281,7 @@ export const DocDashboard = () => {
                         >
                           Patient Gender - <strong>Male</strong>
                         </h4>
-                      </div> */}
+                      </div>
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
                         After successfull checkup press Next Patient to call the
                         next patient in Queue

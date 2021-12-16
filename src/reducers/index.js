@@ -9,6 +9,7 @@ import setBookmark from "./setBookmark";
 import consultedappointments from "./consultedappointments";
 import createToken from "./createToken";
 import userAppointments from "./userAppointments";
+import nonConsultedappointments from "./nonConsultedappointments";
 
 const reducers = combineReducers({
   setToken,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   setBookmark,
   consultedappointments,
   createToken,
+  nonConsultedappointments,
 });
 
 export default reducers;

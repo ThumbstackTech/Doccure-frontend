@@ -112,3 +112,24 @@ export const useUserAppointments = () => {
 
   return userAllAppointments;
 };
+
+export const useUserByAppointmnet = () => {
+  // /get-patient
+  const userByAppointment = async (data) => {
+    console.log("user app hook", data);
+    try {
+      let appoint = await axios.post("/api/user/get-patient", data);
+      console.log("user app res", appoint.data);
+      // dispatch(userAppointments(appoint.data));
+      // toast.success("Bookmarked");
+      //   dispatch(setToken(user.data.user.jwt));
+      return appoint.data;
+    } catch (error) {
+      console.log("in all appp user", error);
+      // toast.error("Error Occuredin all app");
+      return false;
+    }
+  };
+
+  return userByAppointment;
+};

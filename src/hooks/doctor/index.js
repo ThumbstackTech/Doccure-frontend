@@ -6,6 +6,7 @@ import { setDoctorByLoc } from "../../actions/setDoctorByLoc";
 import { setDoctor } from "../../actions/setDoctor";
 import { appointments } from "../../actions/appointments";
 import { consultedappointments } from "../../actions/consultedappointments";
+import { nonConsultedappointments } from "../../actions/nonConsultedappointments";
 import { setUser } from "../../actions/setUser";
 import { setToken } from "../../actions/setToken";
 import { createToken } from "../../actions/createToken";
@@ -214,4 +215,23 @@ export const useFetchAppointment = () => {
   };
 
   return fetchAppointment;
+};
+
+export const useNonConsultedAppointment = () => {
+  const dispatch = useDispatch();
+
+  const nonConsultedAppointment = async (data) => {
+    console.log("doc consulted doctor id", data);
+    try {
+      let doctor = await axios.post("/api/doctor/fetch-non", data);
+      console.log("doc consulted ", doctor.data);
+      dispatch(nonConsultedappointments(doctor.data.appointment));
+      //   return doctor.data;
+      //   dispatch(setToken(user.data.token));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return nonConsultedAppointment;
 };

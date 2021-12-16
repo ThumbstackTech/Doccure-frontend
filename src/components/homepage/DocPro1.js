@@ -14,6 +14,7 @@ import {
   useConsultedAppointment,
 } from "../../hooks/doctor";
 // import { setToken } from "../../actions/setToken";
+import { useUserAppointments } from "../../hooks/user";
 
 export const DocPro1 = () => {
   // const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const DocPro1 = () => {
   const doctorAppointment = useDoctorAppointments();
   const createAppointment = useCreateAppointments();
   const consultedAppointment = useConsultedAppointment();
+  const userAllAppointments = useUserAppointments();
 
   const doctor = useSelector((state) => state.setDoctor);
   // const user = useSelector((state) => state.setUser);
@@ -30,6 +32,7 @@ export const DocPro1 = () => {
   const createToken = useSelector((state) => state.createToken);
   const userAppointment = useSelector((state) => state.userAppointments);
   console.log("user app", userAppointment);
+  const [alreadyBooked, setAlreadyBooked] = useState("");
 
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
@@ -56,7 +59,12 @@ export const DocPro1 = () => {
   // console.log("haveAppointmet", haveAppointmet);
 
   useEffect(() => {
+    fetchDoctor(); // eslint-disable-next-line
+  }, [doctorId]);
+
+  const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
+    const userId = onlineUser && onlineUser.userId;
     if (onlineUser) {
       // onlineUser = onlineUser;
       setuser(onlineUser);
@@ -64,11 +72,6 @@ export const DocPro1 = () => {
       onlineUser = "";
       setuser(onlineUser);
     }
-
-    fetchDoctor(); // eslint-disable-next-line
-  }, [doctorId]);
-
-  const fetchDoctor = async () => {
     // let data = doctorId;
     // let date = Date();
     let today = new Date(),
@@ -82,6 +85,13 @@ export const DocPro1 = () => {
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
+    await userAllAppointments({ userId, date });
+    const tokenBooked = userAppointment.find(
+      (token) => token.doctor.doctorId === doctorId
+    );
+    // if (userAppointment[0].include(doctorId))
+    console.log("user token booked,", tokenBooked);
+    // setAlreadyBooked(tokenBooked);
 
     // const appointed = appointments.filter((app) => {
     //   return userAppointment.find(
@@ -222,7 +232,7 @@ export const DocPro1 = () => {
                       </h4>
                     </div>
                     <div className="clinic-booking">
-                      {user ? (
+                      {user && !alreadyBooked ? (
                         <Link
                           to="#"
                           className="apt-btn"
@@ -230,6 +240,15 @@ export const DocPro1 = () => {
                         >
                           Book Token No.
                           {appointments && appointments.length + 1}
+                        </Link>
+                      ) : alreadyBooked ? (
+                        <Link
+                          to={`/tokenbooking/${doctor.doctorId}`}
+                          className="apt-btn"
+                          // onClick={bookAppointment}
+                        >
+                          Already Have a Token
+                          {/* {appointments && appointments.length + 1} */}
                         </Link>
                       ) : (
                         <Link
