@@ -31,7 +31,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
       (token) => token.appointment.doctorId === doctor.doctorId
     );
     console.log("token booked,", tokenBooked);
-    setAlreadyBooked(tokenBooked);
+    setAlreadyBooked(tokenBooked); // eslint-disable-next-line
   }, []);
   // const addBookmark = async (doctorId, bookmark) => {
   const addBookmark = async (doctorId, bookmark) => {
