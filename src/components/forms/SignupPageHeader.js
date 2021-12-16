@@ -78,9 +78,27 @@ export const SignupPageHeader = () => {
                   <i className="fas fa-plus" /> Tokens
                 </Link>
               </li> */}
-              <li className="login-link">
-                <Link to="/signuppage">Login / Register</Link>
-              </li>
+              {user ? (
+                <>
+                  <li className="login-link">
+                    <Link to="/#">
+                      <i className="fas fa-plus"> </i>Hi {user}
+                    </Link>
+                  </li>
+                  <li className="login-link">
+                    <Link to="/signuppage" onClick={logout}>
+                      <i className="fas fa-plus"> </i>
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                  <li className="login-link">
+                    <Link className="nav-link header-login" to="/signuppage">
+                      Login
+                    </Link>
+                  </li>
+              )}
             </ul>
           </div>
           {user ? (
