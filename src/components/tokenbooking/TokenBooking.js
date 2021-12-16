@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 // import DocFooter from "../doctorapp/forms/DocFooter";
 // import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
@@ -14,6 +14,8 @@ import {
 } from "../../hooks/doctor";
 import SignupPageHeader from "../forms/SignupPageHeader";
 import $ from "jquery";
+import { useSendOtp } from "../../hooks/user";
+import { toast } from "react-toastify";
 
 export const TokenBooking = () => {
   const { appointmentId, doctorId } = useParams();
@@ -74,6 +76,24 @@ export const TokenBooking = () => {
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     // await consultedAppointment({ doctorId, date });
+  };
+
+  //Send SMS Notification
+  const [time, setTime] = useState("300000")
+  const handleChange = (value) =>{
+    setTime(value);
+  }
+  let notiSecs = (((appointments && appointments.length)-1)*600000)-time;
+  if(notiSecs<0){
+    notiSecs=0;
+  }
+
+  const sendOtp = useSendOtp();
+
+  let phone = localStorage.getItem("localPhoneNo");
+  const getOtp = async () => {
+    let data = { phoneNo: phone };
+    await sendOtp(data);
   };
 
   //Countdown
@@ -206,15 +226,28 @@ export const TokenBooking = () => {
                     <select
                       style={{ width: "30%", margin: "0 20px" }}
                       className="form-select"
+                      onChange={(e)=>{
+                        handleChange(e.target.value);
+                      }}
                     >
-                      <option>15 mins</option>
-                      <option className="sorting">30 mins</option>
-                      <option className="sorting">1 hr</option>
+                      <option value="300000">5 mins</option>
+                      <option value="600000" className="sorting">10 mins</option>
+                      {/* <option className="sorting">1 hr</option>
                       <option className="sorting">2 hr</option>
                       <option className="sorting">3 hr</option>
-                      <option className="sorting">4 hr</option>
+                      <option className="sorting">4 hr</option> */}
                     </select>
-                    before
+                    before?
+                    <button
+                      style={{marginLeft:"10px"}}
+                      className="btn btn-primary"
+                      onClick={()=>{
+                        toast.success("Notification Preference Saved")
+                        setTimeout(() => {
+                          getOtp();
+                        }, notiSecs);
+                      }}
+                    >OK</button>
                   </p>
                   {/* <a
                     style={{ marginTop: "20px" }}
