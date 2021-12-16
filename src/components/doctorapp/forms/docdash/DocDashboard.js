@@ -224,8 +224,8 @@ export const DocDashboard = () => {
                         </h4>
                       </div> */}
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        After successfull checkup press Next Patient to call the next patient in Queue
-                        
+                        After successfull checkup press Next Patient to call the
+                        next patient in Queue
                       </h4>
                       <ul
                         style={{ justifyContent: "center" }}
@@ -241,14 +241,31 @@ export const DocDashboard = () => {
                           </button>
                         </li> */}
                         <li className="nav-item">
-                          <button
-                            style={{ borderRadius: "7px", padding: "10px 50px" }}
-                            type="button"
-                            className="btn btn-success"
-                            onClick={nextToken}
-                          >
-                            Next Patient
-                          </button>
+                          {appointments.length > 0 ? (
+                            <button
+                              style={{
+                                borderRadius: "7px",
+                                padding: "10px 50px",
+                              }}
+                              type="button"
+                              className="btn btn-success"
+                              onClick={nextToken}
+                            >
+                              Next Patient
+                            </button>
+                          ) : (
+                            <button
+                              style={{
+                                borderRadius: "7px",
+                                padding: "10px 50px",
+                              }}
+                              type="button"
+                              className="btn btn-success"
+                              // onClick={nextToken}
+                            >
+                              No Patient in Queue
+                            </button>
+                          )}
                         </li>
                       </ul>
                     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 
 export const SignupPageFooter = () => {
+  let onlineUser = JSON.parse(localStorage.getItem("user"));
   return (
     <>
       <footer className="footer">
@@ -46,10 +47,14 @@ export const SignupPageFooter = () => {
                   <h2 className="footer-title">For Patients</h2>
                   <ul>
                     <li>
-                      <a href="/signuppage">Login</a>
+                      <a href={onlineUser.userId ? "/" : "/signuppage"}>
+                        Login
+                      </a>
                     </li>
                     <li>
-                      <a href="/signuppage">Register</a>
+                      <a href={onlineUser.userId ? "/" : "/signuppage"}>
+                        Register
+                      </a>
                     </li>
                     <li>
                       <a href="/">Home</a>
