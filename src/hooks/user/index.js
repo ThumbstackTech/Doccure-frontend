@@ -54,7 +54,7 @@ export const useSendOtp = () => {
     try {
       let user = await axios.post("/api/user/send-otp", data);
       console.log(user.data);
-      toast.success("Otp Senr");
+      toast.success("Otp Sent");
       //   dispatch(setUser(user.data.user));
       //   dispatch(setToken(user.data.user.jwt));
       return true;
