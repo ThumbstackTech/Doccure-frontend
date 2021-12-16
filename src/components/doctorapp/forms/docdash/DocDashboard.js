@@ -241,8 +241,7 @@ export const DocDashboard = () => {
                           </button>
                         </li> */}
                         <li className="nav-item">
-                          {appointments.length > 0 &&
-                          appointments.consulted === "false" ? (
+                          {appointments.length > 0 && left > 0 ? (
                             <button
                               style={{
                                 borderRadius: "7px",
