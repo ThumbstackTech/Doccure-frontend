@@ -41,7 +41,7 @@ export const DocPro1 = () => {
   console.log("individual doc appointments", appointments);
   console.log("doc consulted appointments", consultedappointments);
   console.log("createToken before", createToken.appointmentId);
-  let appointmentId = createToken && createToken.appointmentId;
+  // let appointmentId = createToken && createToken.appointmentId;
 
   // const [doctor, setDoctor] = useState("");
   const [user, setuser] = useState("");

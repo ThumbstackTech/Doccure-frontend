@@ -42,10 +42,10 @@ export const TokenBooking = () => {
   console.log("fetch token doctor", doctor);
   console.log("fetch appointmneyt", appointmentId);
   console.log("createToken", createToken);
-  let current = consultedappointments.length;
+  // let current = consultedappointments.length;
 
-  let total = appointments.length;
-  let left = total - current;
+  // let total = appointments.length;
+  // let left = total - current;
 
   // let doctorId = doctor != null && doctor.doctorId;
   useEffect(() => {
@@ -55,7 +55,7 @@ export const TokenBooking = () => {
     // eslint-disable-next-line
   }, [appointments]);
   const fetchApp = async () => {
-    let res = await fetchAppointment(appointmentId);
+    await fetchAppointment(appointmentId);
 
     let index =
       appointments &&

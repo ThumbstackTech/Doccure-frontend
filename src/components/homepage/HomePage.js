@@ -6,7 +6,6 @@ import { SignupPageFooter } from "../forms/SignupPageFooter";
 import { SignupPageHeader } from "../forms/SignupPageHeader";
 import { Fab } from "../FabButton/fab";
 import { useUserAppointments, useGetBookmark } from "../../hooks/user";
-import { appointments } from "../../actions/appointments";
 
 export const HomePage = () => {
   // const [user, setUser] = useState("");
