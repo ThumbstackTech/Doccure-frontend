@@ -84,6 +84,8 @@ export const DocDashboard = () => {
     // console.log("next ", notConsulted);
     await markConsulted({ appointmentId, date });
     await consultedAppointment({ doctorId, date });
+    $('.clini-infos').css('display','none')
+    $('.showHide').text('Show Patient Details')
   };
 
   const showPatientDetails = () => {
