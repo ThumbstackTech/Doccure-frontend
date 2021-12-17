@@ -37,7 +37,7 @@ export const DocSection = ({ docData }) => {
 
   return (
     <>
-      <section className="section section-doctor">
+      <section id="doc-section" className="section section-doctor">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

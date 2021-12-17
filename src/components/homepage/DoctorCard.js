@@ -72,7 +72,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               />
             </a>
             <a
-              href="/"
+              href="#doc-section"
               onClick={() => addBookmark(doctor.doctorId, !bookmark)}
               // className="fav-btn"
               className={
