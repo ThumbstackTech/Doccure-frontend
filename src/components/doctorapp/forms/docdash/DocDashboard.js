@@ -248,10 +248,14 @@ export const DocDashboard = () => {
                                   Current Patient Token No.
                                 </h6>
                                 <div className="dash-widget-count">
-                                  <h3>
+                                  {left > 0 ? (
+                                    <h3>
                                     {consultedappointments &&
-                                      consultedappointments.length}
+                                      consultedappointments.length+1}
                                   </h3>
+                                  ) : (
+                                    <h3>0</h3>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -319,7 +323,6 @@ export const DocDashboard = () => {
                         className="nav nav-tabs nav-tabs-solid"
                       >
                         <li className="nav-item">
-                          {left > 0 ? (
                             <button
                               style={{
                                 borderRadius: "7px",
@@ -331,18 +334,6 @@ export const DocDashboard = () => {
                             >
                               Show Patient Details
                             </button>
-                          ) : (
-                            <button
-                              style={{
-                                borderRadius: "7px",
-                                cursor: "pointer",
-                              }}
-                              type="button"
-                              className="showHide btn btn-primary"
-                            >
-                              No More Patients to show
-                            </button>
-                          )}
                         </li>
                       </ul>
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
