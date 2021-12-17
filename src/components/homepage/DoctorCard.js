@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { useBookmarkDoc } from "../../hooks/user";
 import { useSelector } from "react-redux";
 // import { setBookmark } from "../../actions/setBookmark";
-import { useGetBookmark } from "../../hooks/user";
+// import { useGetBookmark } from "../../hooks/user";
 
 export const DoctorCard = ({ doctor, item, Appointment }) => {
   console.log("doctor card props", Appointment[item]);
-  const bookmarks = useGetBookmark();
+  // const bookmarks = useGetBookmark();
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(false);
@@ -72,7 +72,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               />
             </a>
             <a
-              href="#"
+              href="/"
               onClick={() => addBookmark(doctor.doctorId, !bookmark)}
               // className="fav-btn"
               className={

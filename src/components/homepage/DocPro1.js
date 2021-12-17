@@ -91,7 +91,7 @@ export const DocPro1 = () => {
     );
     // if (userAppointment[0].include(doctorId))
     console.log("user token booked,", tokenBooked);
-    // setAlreadyBooked(tokenBooked);
+    setAlreadyBooked(tokenBooked);
 
     // const appointed = appointments.filter((app) => {
     //   return userAppointment.find(

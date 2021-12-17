@@ -104,46 +104,46 @@ export const DocDashboard = () => {
     // console.log("next ", notConsulted);
     await markConsulted({ appointmentId, date });
     await consultedAppointment({ doctorId, date });
-    $('.clini-infos').css('display','none')
-    $('.showHide').text('Show Patient Details')
+    $(".clini-infos").css("display", "none");
+    $(".showHide").text("Show Patient Details");
   };
   // console.log("patient info", notConsultedpat);
-  const fetchPatient = async () => {
-    // let appointmentId =
-    //   nonConsultedAppointment[0] && nonConsultedAppointment[0].appointmentId;
-    // let patientinfo = await nonConsultedAppointment({ appointmentId });
-    // console.log("non patient info appoint", nonConsultedAppointment[0]);
-    // setNotConsulted(notConsulted[0].appointmentId);
-    // let patientinfo = await userByAppointment({ appointmentId });
-    // console.log("patient info appoint", patientinfo);
-    // await consultedAppointment({ doctorId, date });
-    // let cf =
-    //   appointments.length > -1 &&
-    //   appointments.filter((app) => {
-    //     return !app.consulted;
-    //   });
-    // console.log("cf", cf);
-    // fetchPatient();
-    // const notConsulted =
-    //   appointments &&
-    //   consultedappointments &&
-    //   appointments.filter((app) => {
-    //     return !consultedappointments.find(
-    //       (consulted) => consulted.appointmentId === app.appointmentId
-    //     );
-    //   });
-    // console.log("doctor notConsulted", notConsulted);
-    // let appointmentId =
-    //   nonConsultedappointments && nonConsultedappointments.appointmentId;
-    // let patientinfo = await userByAppointment({ appointmentId });
-    // console.log("patient info appoint", patientinfo);
-    // if (notConsulted[0]) {
-    //   let appointmentId = notConsulted[0] && notConsulted[0].appointmentId;
-    //   let patientinfo = await userByAppointment({ appointmentId });
-    //   console.log("patient info appoint", patientinfo);
-    // }
-    // let appointmentId = notConsulted[0].appointmentId;
-  };
+  // const fetchPatient = async () => {
+  //   // let appointmentId =
+  //   //   nonConsultedAppointment[0] && nonConsultedAppointment[0].appointmentId;
+  //   // let patientinfo = await nonConsultedAppointment({ appointmentId });
+  //   // console.log("non patient info appoint", nonConsultedAppointment[0]);
+  //   // setNotConsulted(notConsulted[0].appointmentId);
+  //   // let patientinfo = await userByAppointment({ appointmentId });
+  //   // console.log("patient info appoint", patientinfo);
+  //   // await consultedAppointment({ doctorId, date });
+  //   // let cf =
+  //   //   appointments.length > -1 &&
+  //   //   appointments.filter((app) => {
+  //   //     return !app.consulted;
+  //   //   });
+  //   // console.log("cf", cf);
+  //   // fetchPatient();
+  //   // const notConsulted =
+  //   //   appointments &&
+  //   //   consultedappointments &&
+  //   //   appointments.filter((app) => {
+  //   //     return !consultedappointments.find(
+  //   //       (consulted) => consulted.appointmentId === app.appointmentId
+  //   //     );
+  //   //   });
+  //   // console.log("doctor notConsulted", notConsulted);
+  //   // let appointmentId =
+  //   //   nonConsultedappointments && nonConsultedappointments.appointmentId;
+  //   // let patientinfo = await userByAppointment({ appointmentId });
+  //   // console.log("patient info appoint", patientinfo);
+  //   // if (notConsulted[0]) {
+  //   //   let appointmentId = notConsulted[0] && notConsulted[0].appointmentId;
+  //   //   let patientinfo = await userByAppointment({ appointmentId });
+  //   //   console.log("patient info appoint", patientinfo);
+  //   // }
+  //   // let appointmentId = notConsulted[0].appointmentId;
+  // };
 
   // setNotConsulted(cf);
 
@@ -154,7 +154,7 @@ export const DocDashboard = () => {
     let patientinfo = await userByAppointment(data);
     console.log("nonconsulted patient info appoint", patientinfo);
     setNotConsulted(patientinfo);
-    if ($(".clini-infos").css("display") == "none") {
+    if ($(".clini-infos").css("display") === "none") {
       $(".clini-infos").css("display", "block");
       $(".showHide").text("Hide Patient Details");
     } else {
