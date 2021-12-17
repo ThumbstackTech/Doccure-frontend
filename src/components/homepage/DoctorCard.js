@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useBookmarkDoc } from "../../hooks/user";
 import { useSelector } from "react-redux";
+// import { setBookmark } from "../../actions/setBookmark";
+import { useGetBookmark } from "../../hooks/user";
 
 export const DoctorCard = ({ doctor, item, Appointment }) => {
   console.log("doctor card props", Appointment[item]);
+  const bookmarks = useGetBookmark();
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
-  const [bookmark, setbookmark] = useState(doctor.isBookmarked);
+  const [bookmark, setbookmark] = useState(false);
   const [alreadyBooked, setAlreadyBooked] = useState(doctor.isBookmarked);
+  const [alreadyBookmarked, setAlreadyBookmarked] = useState("");
+  const userBookmarks = useSelector((state) => state.setBookmark);
   const user = useSelector((state) => state.setUser);
   const bookmarkDoc = useBookmarkDoc();
   // console.log("doctor card bookmarked", bookmark);
@@ -19,7 +24,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
 
     userAppointment
   );
-  // console.log("token details", userAppointment[0].doctorId, doctor.doctorId);
+  console.log("bookmarks doctor card ", userBookmarks);
 
   useEffect(() => {
     // const notConsulted = appointments.filter((app) => {
@@ -30,14 +35,23 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
     const tokenBooked = userAppointment.find(
       (token) => token.appointment.doctorId === doctor.doctorId
     );
+    const bookmarks =
+      userBookmarks.bookmarks &&
+      userBookmarks.bookmarks.find(
+        (userBookmark) => userBookmark === doctor.doctorId
+      );
     console.log("token booked,", tokenBooked);
+    console.log("bookmark,", bookmarks);
+    if (bookmarks) setAlreadyBookmarked(bookmarks);
+
     setAlreadyBooked(tokenBooked); // eslint-disable-next-line
-  }, []);
+  }, [userAppointment]);
   // const addBookmark = async (doctorId, bookmark) => {
   const addBookmark = async (doctorId, bookmark) => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     let userId = onlineUser.userId;
     setbookmark(bookmark);
+    setAlreadyBookmarked(doctorId);
     let data = { doctorId, bookmark, userId };
     console.log("doctor card bookmark data", data);
     await bookmarkDoc(data);
@@ -58,12 +72,15 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               />
             </a>
             <a
-              href="/"
+              href="#"
               onClick={() => addBookmark(doctor.doctorId, !bookmark)}
               // className="fav-btn"
-              className={!bookmark ? "fav-btn" : "fav-btn active"}
+              className={
+                alreadyBookmarked === doctor.doctorId
+                  ? "fav-btn active"
+                  : "fav-btn "
+              }
             >
-              {bookmark}
               <i className="far fa-bookmark" />
             </a>
           </div>

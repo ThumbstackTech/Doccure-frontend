@@ -13,6 +13,7 @@ import {
   useNonConsultedAppointment,
 } from "../../../../hooks/doctor";
 import { useUserByAppointmnet } from "../../../../hooks/user";
+import $ from "jquery";
 
 export const DocDashboard = () => {
   // const navigate = useNavigate();
@@ -37,6 +38,7 @@ export const DocDashboard = () => {
     consultedappointments &&
       consultedappointments[consultedappointments.length - 1]
   );
+  const [date, setDate] = useState();
   let current = consultedappointments.length;
 
   let total = appointments.length;
@@ -44,13 +46,13 @@ export const DocDashboard = () => {
   console.log("doctor dash", doctor);
   console.log("doctor appoint", appointments);
   console.log("doctor consulted", consultedappointments);
-  console.log("doctor nonconsulted", nonConsultedappointments);
+  console.log("nonconsulted doctor id dash", nonConsultedappointments);
 
   useEffect(() => {
     fetchDoctor();
 
     // eslint-disable-next-line
-  }, []);
+  }, [nonConsultedappointments]);
 
   const fetchDoctor = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
@@ -65,12 +67,13 @@ export const DocDashboard = () => {
         (today.getMonth() + 1) +
         "-" +
         today.getDate();
+    setDate(date);
     console.log("today", date);
     await doctorById({ doctorId });
     await doctorAppointment({ doctorId, date });
     await consultedAppointment({ doctorId, date });
     await nonConsultedAppointment({ doctorId, date });
-    console.log("non patient info appoint", nonConsultedappointments);
+    // console.log("non patient info appoint", nonConsultedappointments);
 
     // let appointmentId = notConsultedpat && notConsultedpat.appointmentId;
     // let patientinfo = await userByAppointment({ appointmentId });
@@ -107,7 +110,7 @@ export const DocDashboard = () => {
     // let appointmentId =
     //   nonConsultedAppointment[0] && nonConsultedAppointment[0].appointmentId;
     // let patientinfo = await nonConsultedAppointment({ appointmentId });
-    console.log("non patient info appoint", nonConsultedAppointment[0]);
+    // console.log("non patient info appoint", nonConsultedAppointment[0]);
     // setNotConsulted(notConsulted[0].appointmentId);
     // let patientinfo = await userByAppointment({ appointmentId });
     // console.log("patient info appoint", patientinfo);
@@ -141,6 +144,22 @@ export const DocDashboard = () => {
   };
 
   // setNotConsulted(cf);
+
+  const showPatientDetails = async () => {
+    let appointmentId =
+      nonConsultedappointments[0] && nonConsultedappointments[0].appointmentId;
+    let data = { appointmentId, date };
+    let patientinfo = await userByAppointment(data);
+    console.log("nonconsulted patient info appoint", patientinfo);
+    setNotConsulted(patientinfo);
+    if ($(".clini-infos").css("display") == "none") {
+      $(".clini-infos").css("display", "block");
+      $(".showHide").text("Hide Patient Details");
+    } else {
+      $(".clini-infos").css("display", "none");
+      $(".showHide").text("Show Patient Details");
+    }
+  };
   return (
     <>
       <div className="main-wrapper">
@@ -261,30 +280,74 @@ export const DocDashboard = () => {
                       Manage Patients
                     </h4>
                     <div className="appointment-tab">
-                      <div className="clini-infos">
+                      <div style={{ display: "none" }} className="clini-infos">
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
                         >
                           Patient Name :{" "}
-                          <strong className="text-success">XYZ</strong>
+                          <strong className="text-success">
+                            {notConsultedpat && notConsultedpat[0].name}
+                          </strong>
                         </h4>
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
                         >
-                          Patient Age - <strong>25</strong>
+                          Patient Age -{" "}
+                          <strong>
+                            {notConsultedpat && notConsultedpat[0].age}
+                          </strong>
                         </h4>
                         <h4
                           style={{ margin: "25px 25px" }}
                           className="doc-name"
                         >
-                          Patient Gender - <strong>Male</strong>
+                          Patient Gender -{" "}
+                          <strong>
+                            {notConsultedpat && notConsultedpat[0].gender}
+                          </strong>
                         </h4>
                       </div>
+                      <ul
+                        style={{
+                          paddingBottom: "0px",
+                          justifyContent: "center",
+                        }}
+                        className="nav nav-tabs nav-tabs-solid"
+                      >
+                        <li className="nav-item">
+                          {left > 0 ? (
+                            <button
+                              style={{
+                                borderRadius: "7px",
+                                cursor: "pointer",
+                              }}
+                              type="button"
+                              className="showHide btn btn-primary"
+                              onClick={showPatientDetails}
+                            >
+                              Show Patient Details
+                            </button>
+                          ) : (
+                            <button
+                              style={{
+                                borderRadius: "7px",
+                                cursor: "pointer",
+                              }}
+                              type="button"
+                              className="showHide btn btn-primary"
+                            >
+                              No More Patients to show
+                            </button>
+                          )}
+                        </li>
+                      </ul>
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
-                        After successfull checkup press Next Patient to call the
-                        next patient in Queue
+                        <i>
+                          After successfull checkup press Next Patient to call
+                          the next patient in Queue
+                        </i>
                       </h4>
                       <ul
                         style={{ justifyContent: "center" }}

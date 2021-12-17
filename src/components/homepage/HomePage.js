@@ -5,24 +5,31 @@ import { useSelector } from "react-redux";
 import { SignupPageFooter } from "../forms/SignupPageFooter";
 import { SignupPageHeader } from "../forms/SignupPageHeader";
 import { Fab } from "../FabButton/fab";
-import { useUserAppointments } from "../../hooks/user";
+import { useUserAppointments, useGetBookmark } from "../../hooks/user";
+import { appointments } from "../../actions/appointments";
 
 export const HomePage = () => {
   // const [user, setUser] = useState("");
   // const [userAppoint, setAppoint] = useState([]);
   const doctorByLocation = useDoctorByLocation();
   const userAllAppointments = useUserAppointments();
+  const bookmarks = useGetBookmark();
   const userAppointment = useSelector((state) => state.userAppointments);
+  const userBookmarks = useSelector((state) => state.setBookmark);
+  console.log("userBookmarks", userBookmarks);
   useEffect(() => {
     onSearch(); // eslint-disable-next-line
-  }, [userAppointment]);
+  }, [appointments]);
   // let details;
   const onSearch = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
-    // if (onlineUser) {
-    //   setUser(onlineUser);
-    // }
-    //
+
+    if (onlineUser) {
+      let userId = onlineUser.userId;
+      // let data = user;
+      await bookmarks({ userId });
+    }
+
     let today = new Date(),
       date =
         today.getFullYear() +

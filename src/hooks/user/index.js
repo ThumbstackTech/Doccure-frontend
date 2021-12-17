@@ -74,7 +74,7 @@ export const useBookmarkDoc = () => {
   const bookmarkDoc = async (data) => {
     console.log("bookmark hook", data);
     try {
-      let doctor = await axios.post("/api/doctor/bookmark-doc", data);
+      let doctor = await axios.post("/api/user/bookmark-doc", data);
       console.log("bookmark res", doctor.data);
       dispatch(setBookmark(doctor.data));
       toast.success("Bookmarked");
@@ -132,4 +132,26 @@ export const useUserByAppointmnet = () => {
   };
 
   return userByAppointment;
+};
+
+export const useGetBookmark = () => {
+  const dispatch = useDispatch();
+
+  const bookmarks = async (data) => {
+    console.log("bookmark hook", data);
+    try {
+      let user = await axios.post("/api/user/bookmarks", data);
+      console.log("bookmark res", user);
+      dispatch(setBookmark(user.data));
+      // toast.success("Bookmarked");
+      //   dispatch(setToken(user.data.user.jwt));
+      return user.data;
+    } catch (error) {
+      console.log("bookmark", error);
+      toast.error("Error Occured");
+      return false;
+    }
+  };
+
+  return bookmarks;
 };

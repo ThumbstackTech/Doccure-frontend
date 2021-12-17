@@ -221,12 +221,12 @@ export const useNonConsultedAppointment = () => {
   const dispatch = useDispatch();
 
   const nonConsultedAppointment = async (data) => {
-    console.log("doc consulted doctor id", data);
+    console.log("nonconsulted doctor id", data);
     try {
       let doctor = await axios.post("/api/doctor/fetch-non", data);
-      console.log("doc consulted ", doctor.data);
+      console.log("nonconsulted doctor id res ", doctor.data);
       dispatch(nonConsultedappointments(doctor.data.appointment));
-      //   return doctor.data;
+      return doctor.data;
       //   dispatch(setToken(user.data.token));
     } catch (error) {
       console.log(error);
