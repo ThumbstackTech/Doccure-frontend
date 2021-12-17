@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import {
   useDoctorDetails,
@@ -152,7 +152,9 @@ export const DocDashboard = () => {
       nonConsultedappointments[0] && nonConsultedappointments[0].appointmentId;
     let data = { appointmentId, date };
     let patientinfo = await userByAppointment(data);
+
     console.log("nonconsulted patient info appoint", patientinfo);
+    console.log("nonconsulted patient info ", nonConsultedappointments);
     setNotConsulted(patientinfo);
     if ($(".clini-infos").css("display") === "none") {
       $(".clini-infos").css("display", "block");
@@ -250,9 +252,9 @@ export const DocDashboard = () => {
                                 <div className="dash-widget-count">
                                   {left > 0 ? (
                                     <h3>
-                                    {consultedappointments &&
-                                      consultedappointments.length+1}
-                                  </h3>
+                                      {consultedappointments &&
+                                        consultedappointments.length + 1}
+                                    </h3>
                                   ) : (
                                     <h3>0</h3>
                                   )}
@@ -323,17 +325,21 @@ export const DocDashboard = () => {
                         className="nav nav-tabs nav-tabs-solid"
                       >
                         <li className="nav-item">
-                            <button
-                              style={{
-                                borderRadius: "7px",
-                                cursor: "pointer",
-                              }}
-                              type="button"
-                              className="showHide btn btn-primary"
-                              onClick={showPatientDetails}
-                            >
-                              Show Patient Details
-                            </button>
+                          <button
+                            style={{
+                              borderRadius: "7px",
+                              cursor: "pointer",
+                            }}
+                            type="button"
+                            className="showHide btn btn-primary"
+                            onClick={
+                              left > 0
+                                ? showPatientDetails
+                                : toast.success("No More Patient Details")
+                            }
+                          >
+                            Show Patient Details
+                          </button>
                         </li>
                       </ul>
                       <h4 style={{ margin: "25px 25px" }} className="doc-name">
