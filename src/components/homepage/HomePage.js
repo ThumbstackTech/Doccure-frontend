@@ -19,7 +19,7 @@ export const HomePage = () => {
   console.log("userBookmarks", userBookmarks);
   useEffect(() => {
     onSearch(); // eslint-disable-next-line
-  }, [appointments]);
+  }, [userAppointment]);
   // let details;
   const onSearch = async () => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));

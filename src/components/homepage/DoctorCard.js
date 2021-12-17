@@ -40,7 +40,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
       userBookmarks.bookmarks.find(
         (userBookmark) => userBookmark === doctor.doctorId
       );
-    console.log("token booked,", tokenBooked);
+    console.log("doctor card token booked,", tokenBooked);
     console.log("bookmark,", bookmarks);
     if (bookmarks) setAlreadyBookmarked(bookmarks);
 
@@ -126,10 +126,8 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 // userAppointment &&
                 // Appointment.appointment.doctorId === doctor.doctorId
                 <Link
-                  // to="/docpro1"
-                  to={`/tokenbooking/${doctor.doctorId}`}
-                  // to={`/tokenbooking/${doctor.doctorId}/${Appointment.appointmentId}`}
-                  // to={`/docpro1/${doctor.doctorId}`}
+                  // to={`/tokenbooking/${doctor.doctorId}`}
+                  to={`/tokenbooking/${doctor.doctorId}/${alreadyBooked.appointment.appointmentId}`}
                   id={"001"}
                   className="btn book-btn"
                 >

@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import DocFooter from "../doctorapp/forms/DocFooter";
 // import TokenHeader from "./TokenHeader";
 import { useSelector } from "react-redux";
@@ -37,19 +37,32 @@ export const TokenBooking = () => {
   //       : appointments.length
   //     : appointments.length - 1;
   const createToken = useSelector((state) => state.createToken);
+  const [index, setIndex] = useState("");
   console.log("token appointments", appointments);
   console.log("fetch token doctor", doctor);
   console.log("fetch appointmneyt", appointmentId);
   console.log("createToken", createToken);
+  let current = consultedappointments.length;
+
+  let total = appointments.length;
+  let left = total - current;
 
   // let doctorId = doctor != null && doctor.doctorId;
   useEffect(() => {
     fetchApp();
     fetchDoctor();
+
     // eslint-disable-next-line
-  }, []);
+  }, [appointments]);
   const fetchApp = async () => {
-    await fetchAppointment(appointmentId);
+    let res = await fetchAppointment(appointmentId);
+
+    let index =
+      appointments &&
+      appointments.findIndex((e) => e.appointmentId === appointmentId);
+    console.log("Tohen NO", appointments);
+    console.log("Tohen NO index", index);
+    setIndex(index);
   };
   const fetchDoctor = async () => {
     // let onlineUser = JSON.parse(localStorage.getItem("user"));
@@ -79,13 +92,13 @@ export const TokenBooking = () => {
   };
 
   //Send SMS Notification
-  const [time, setTime] = useState("300000")
-  const handleChange = (value) =>{
+  const [time, setTime] = useState("300000");
+  const handleChange = (value) => {
     setTime(value);
-  }
-  let notiSecs = (((appointments && appointments.length)-1)*600000)-time;
-  if(notiSecs<0){
-    notiSecs=0;
+  };
+  let notiSecs = ((appointments && appointments.length) - 1) * 600000 - time;
+  if (notiSecs < 0) {
+    notiSecs = 0;
   }
 
   const sendOtp = useSendOtp();
@@ -98,7 +111,7 @@ export const TokenBooking = () => {
 
   //Countdown
   useEffect(() => {
-    var count = 10;
+    var count = 150;
     const timer = setInterval(() => {
       if (count >= 0) {
         if (count === 0) {
@@ -148,7 +161,8 @@ export const TokenBooking = () => {
                   <img src="/assets/img/icons/check-circle.png" alt="logo" />
                   <h3>Token booked Successfully!</h3>
                   <h3 style={{ fontSize: "2rem" }}>
-                    Token No. {appointments && appointments.length}
+                    Token No. {index + 1}
+                    {/* {appointments && appointments.length} */}
                   </h3>
                   <p style={{ margin: "40px 0" }}>
                     Token booked for{" "}
@@ -226,12 +240,14 @@ export const TokenBooking = () => {
                     <select
                       style={{ width: "30%", margin: "0 20px" }}
                       className="form-select"
-                      onChange={(e)=>{
+                      onChange={(e) => {
                         handleChange(e.target.value);
                       }}
                     >
                       <option value="300000">5 mins</option>
-                      <option value="600000" className="sorting">10 mins</option>
+                      <option value="600000" className="sorting">
+                        10 mins
+                      </option>
                       {/* <option className="sorting">1 hr</option>
                       <option className="sorting">2 hr</option>
                       <option className="sorting">3 hr</option>
@@ -239,15 +255,17 @@ export const TokenBooking = () => {
                     </select>
                     before?
                     <button
-                      style={{marginLeft:"10px"}}
+                      style={{ marginLeft: "10px" }}
                       className="btn btn-primary"
-                      onClick={()=>{
-                        toast.success("Notification Preference Saved")
+                      onClick={() => {
+                        toast.success("Notification Preference Saved");
                         setTimeout(() => {
                           getOtp();
                         }, notiSecs);
                       }}
-                    >OK</button>
+                    >
+                      OK
+                    </button>
                   </p>
                   {/* <a
                     style={{ marginTop: "20px" }}

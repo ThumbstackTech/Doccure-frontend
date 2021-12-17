@@ -112,12 +112,15 @@ export const DocPro1 = () => {
     let userId = user.userId;
     let data = { doctorId, date, userId };
     console.log("create app", data);
-    await createAppointment(data);
+    let res = await createAppointment(data);
+    if (res) {
+      navigate(`/tokenbooking/${doctorId}/${res.appointmentId}`);
+    }
     console.log("create tokena after appointment", createToken);
-    console.log("create tokena idappointment", appointmentId);
+    console.log("createappoint res token", res && res.appointmentId);
     // dispatch(setToken(""));
-    // navigate(`/tokenbooking/${doctorId}/${appointmentId}`);
-    navigate(`/tokenbooking/${doctorId}`);
+
+    // navigate(`/tokenbooking/${doctorId}`);
     // to={`/docpro1/${doctor.doctorId}`}
   };
   return (

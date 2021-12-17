@@ -139,12 +139,12 @@ export const useCreateAppointments = () => {
     console.log("appoint doctor id", data);
     try {
       let doctor = await axios.post("/api/doctor/create-appointment", data);
-      console.log("create appoint ", doctor.data);
+      console.log("create appoint res ", doctor.data);
       dispatch(createToken(doctor.data.appointments));
       // dispatch(setDoctor(doctor.data.doctorId));
       toast.success("Token Booked");
       // dispatch(setDoctor(doctor.data.doctorId));
-      // return doctor.data.appointments;
+      return doctor.data.appointments;
 
       //   dispatch(setToken(user.data.token));
     } catch (error) {
@@ -206,8 +206,8 @@ export const useFetchAppointment = () => {
       console.log("fetch appoint res ", doctor.data);
       dispatch(createToken(doctor.data.appointment));
       // dispatch(appointments(doctor.data.appointments));
-      dispatch(setDoctor(doctor.data.doctor));
-      //   return doctor.data;
+      // dispatch(setDoctor(doctor.data.doctor));
+      return doctor.data.doctor;
       // dispatch(setDoctor(doctor.data.doctor));
     } catch (error) {
       console.log(error);
