@@ -145,7 +145,7 @@ export const SignupMain = () => {
                             onChange={(e) => setOtp(e.target.value)}
                           />
                           <label style={{display: otpcountdown === 0 ? "none" :"inline-block"}}>Resend OTP in <b class="count">{otpcountdown} secs&nbsp;</b></label>
-                          <a style={{textDecoration:"underline",color:"#0d6efd",display: otpcountdown !== 0 ? "none" :"block"}} href="">Resend OTP</a>
+                          <p style={{textDecoration:"underline",color:"#0d6efd",display: otpcountdown !== 0 ? "none" :"block"}}onClick={getOtp}>Resend OTP</p>
                         </div>
                       )}
                       {!showOtp && (
