@@ -11,11 +11,11 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(false);
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   const [alreadyBooked, setAlreadyBooked] = useState(doctor.isBookmarked);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState("");
   const userBookmarks = useSelector((state) => state.setBookmark);
-  // const user = useSelector((state) => state.setUser);
+  const user = useSelector((state) => state.setUser);
   const bookmarkDoc = useBookmarkDoc();
   // console.log("doctor card bookmarked", bookmark);
   // const doctorId = doctor.doctorId;
@@ -51,7 +51,8 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
   const addBookmark = async (doctorId, bookmark) => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     let userId = onlineUser.userId;
-    setUser(userId);
+    console.log("bookmarks doctor card ", userId);
+    // setUser(userId);
     setbookmark(bookmark);
     setAlreadyBookmarked(doctorId);
     let data = { doctorId, bookmark, userId };
@@ -73,6 +74,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 src="/assets/img/doctors/doctor-08.jpg"
               />
             </a>
+
             {user && (
               <a
                 href="#doc-section"
@@ -87,6 +89,18 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 <i className="far fa-bookmark" />
               </a>
             )}
+            {/* <a
+              href="#doc-section"
+              onClick={() => addBookmark(doctor.doctorId, !bookmark)}
+              // className="fav-btn"
+              className={
+                alreadyBookmarked === doctor.doctorId
+                  ? "fav-btn active"
+                  : "fav-btn "
+              }
+            >
+              <i className="far fa-bookmark" />
+            </a> */}
           </div>
           <div className="pro-content">
             <h3 className="title">
