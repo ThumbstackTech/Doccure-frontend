@@ -333,12 +333,15 @@ export const DocDashboard = () => {
                             type="button"
                             className="showHide btn btn-primary"
                             onClick={
-                              left > -1
-                                ? showPatientDetails
-                                : toast.success("No More Patient Details")
+                              appointments.length > 0 &&
+                              left > 0 &&
+                              showPatientDetails
+                              // :   toast.success("No More Patient Details")
                             }
                           >
-                            Show Patient Details
+                            {appointments.length > 0 && left > 0
+                              ? "Show Patient Details"
+                              : "No More Patients"}
                           </button>
                         </li>
                       </ul>

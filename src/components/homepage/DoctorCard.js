@@ -24,7 +24,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
 
     userAppointment
   );
-  console.log("bookmarks doctor card ", userBookmarks);
+  console.log("bookmarks doctor card ", user);
 
   useEffect(() => {
     // const notConsulted = appointments.filter((app) => {
@@ -71,7 +71,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 src="/assets/img/doctors/doctor-08.jpg"
               />
             </a>
-            {user && (
+            {user.length && (
               <a
                 href="#doc-section"
                 onClick={() => addBookmark(doctor.doctorId, !bookmark)}
