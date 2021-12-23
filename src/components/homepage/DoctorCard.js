@@ -71,18 +71,20 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 src="/assets/img/doctors/doctor-08.jpg"
               />
             </a>
-            <a
-              href="#doc-section"
-              onClick={() => addBookmark(doctor.doctorId, !bookmark)}
-              // className="fav-btn"
-              className={
-                alreadyBookmarked === doctor.doctorId
-                  ? "fav-btn active"
-                  : "fav-btn "
-              }
-            >
-              <i className="far fa-bookmark" />
-            </a>
+            {user && (
+              <a
+                href="#doc-section"
+                onClick={() => addBookmark(doctor.doctorId, !bookmark)}
+                // className="fav-btn"
+                className={
+                  alreadyBookmarked === doctor.doctorId
+                    ? "fav-btn active"
+                    : "fav-btn "
+                }
+              >
+                <i className="far fa-bookmark" />
+              </a>
+            )}
           </div>
           <div className="pro-content">
             <h3 className="title">
