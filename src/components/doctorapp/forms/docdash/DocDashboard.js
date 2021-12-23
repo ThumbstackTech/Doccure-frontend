@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import {
   useDoctorDetails,
