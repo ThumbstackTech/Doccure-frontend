@@ -11,6 +11,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
   console.log("doctor card props doctor", doctor.doctorId);
   const userAppointment = useSelector((state) => state.userAppointments);
   const [bookmark, setbookmark] = useState(false);
+  // const [user, setUser] = useState("");
   const [alreadyBooked, setAlreadyBooked] = useState(doctor.isBookmarked);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState("");
   const userBookmarks = useSelector((state) => state.setBookmark);
@@ -24,7 +25,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
 
     userAppointment
   );
-  console.log("bookmarks doctor card ", userBookmarks);
+  console.log("bookmarks doctor card ", user);
 
   useEffect(() => {
     // const notConsulted = appointments.filter((app) => {
@@ -50,6 +51,8 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
   const addBookmark = async (doctorId, bookmark) => {
     let onlineUser = JSON.parse(localStorage.getItem("user"));
     let userId = onlineUser.userId;
+    console.log("bookmarks doctor card ", userId);
+    // setUser(userId);
     setbookmark(bookmark);
     setAlreadyBookmarked(doctorId);
     let data = { doctorId, bookmark, userId };
@@ -71,7 +74,22 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
                 src="/assets/img/doctors/doctor-08.jpg"
               />
             </a>
-            <a
+
+            {user && (
+              <a
+                href="#doc-section"
+                onClick={() => addBookmark(doctor.doctorId, !bookmark)}
+                // className="fav-btn"
+                className={
+                  alreadyBookmarked === doctor.doctorId
+                    ? "fav-btn active"
+                    : "fav-btn "
+                }
+              >
+                <i className="far fa-bookmark" />
+              </a>
+            )}
+            {/* <a
               href="#doc-section"
               onClick={() => addBookmark(doctor.doctorId, !bookmark)}
               // className="fav-btn"
@@ -82,7 +100,7 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
               }
             >
               <i className="far fa-bookmark" />
-            </a>
+            </a> */}
           </div>
           <div className="pro-content">
             <h3 className="title">

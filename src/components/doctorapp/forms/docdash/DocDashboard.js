@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import {
   useDoctorDetails,
@@ -333,12 +333,15 @@ export const DocDashboard = () => {
                             type="button"
                             className="showHide btn btn-primary"
                             onClick={
-                              left > 0
-                                ? showPatientDetails
-                                : toast.success("No More Patient Details")
+                              appointments.length > 0 &&
+                              left > 0 &&
+                              showPatientDetails
+                              // :   toast.success("No More Patient Details")
                             }
                           >
-                            Show Patient Details
+                            {appointments.length > 0 && left > 0
+                              ? "Show Patient Details"
+                              : "No More Patients"}
                           </button>
                         </li>
                       </ul>

@@ -111,7 +111,7 @@ export const TokenBooking = () => {
 
   //Countdown
   useEffect(() => {
-    var count = 150;
+    var count = 15;
     const timer = setInterval(() => {
       if (count >= 0) {
         if (count === 0) {
