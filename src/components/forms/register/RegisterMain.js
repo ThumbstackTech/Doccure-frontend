@@ -96,7 +96,7 @@ export const RegisterMain = () => {
                     <div class="login-header">
                       <h3>
                         Patient Register{" "}
-                        <a href="/doctorlogin">Are you a Doctor?</a>
+                        {/* <a href="/doctorlogin">Are you a Doctor?</a> */}
                       </h3>
                     </div>
 

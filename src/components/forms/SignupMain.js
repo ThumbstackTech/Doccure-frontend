@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSendOtp, useVerifyUser } from "../../hooks/user";
@@ -17,6 +17,19 @@ export const SignupMain = () => {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
+  const [otpcountdown, setotpcountdown] = useState(0);
+
+  //Countdown
+  useEffect(() => {
+    var otpcountdown = 60;
+    const timer = setInterval(() => {
+      if (otpcountdown >= 0) {
+        setotpcountdown(otpcountdown--);
+      }  
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  //Countdown
 
   // const [message, setMessage] = useState(false);
 
@@ -131,6 +144,8 @@ export const SignupMain = () => {
                             maxlength="6"
                             onChange={(e) => setOtp(e.target.value)}
                           />
+                          <label style={{display: otpcountdown === 0 ? "none" :"inline-block"}}>Resend OTP in <b class="count">{otpcountdown} secs&nbsp;</b></label>
+                          <a style={{textDecoration:"underline",color:"#0d6efd",display: otpcountdown !== 0 ? "none" :"block"}} href="">Resend OTP</a>
                         </div>
                       )}
                       {!showOtp && (
