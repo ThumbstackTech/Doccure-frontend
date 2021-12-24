@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DocFooter from "../DocFooter";
 import DocDashHeader from "./DocDashHeader";
 import { useSelector } from "react-redux";
-// import { toast } from "react-toastify";
+
 // import { useNavigate } from "react-router-dom";
 import {
   useDoctorDetails,
@@ -12,13 +12,20 @@ import {
   useMarkConsulted,
   useNonConsultedAppointment,
 } from "../../../../hooks/doctor";
-import { useUserByAppointmnet } from "../../../../hooks/user";
+import {
+  useUserByAppointmnet,
+  useSendNotification,
+  useSendOtp,
+} from "../../../../hooks/user";
+// import {  } from "../../hooks/user";
 import $ from "jquery";
+// import {  } from "../../hooks/user";
 
 export const DocDashboard = () => {
   // const navigate = useNavigate();
 
   const doctorById = useDoctorDetails();
+  const sendNotification = useSendNotification();
   const userByAppointment = useUserByAppointmnet();
   const doctorAppointment = useDoctorAppointments();
   // const createAppointment = useCreateAppointments();
@@ -146,16 +153,41 @@ export const DocDashboard = () => {
   // };
 
   // setNotConsulted(cf);
-
+  const sendOtp = useSendOtp();
   const showPatientDetails = async () => {
     let appointmentId =
       nonConsultedappointments[0] && nonConsultedappointments[0].appointmentId;
     let data = { appointmentId, date };
     let patientinfo = await userByAppointment(data);
 
+    if (nonConsultedappointments[1]) {
+      let appointmentId =
+        nonConsultedappointments[1] &&
+        nonConsultedappointments[1].appointmentId;
+      let data = { appointmentId, date };
+      let nextpatientinfo = await userByAppointment(data);
+      console.log("nonconsulted next patient", nextpatientinfo);
+      let Notidata = { phoneNo: nextpatientinfo[0].phoneNo };
+      console.log("notii next", Notidata);
+      // console.log("notii", data);
+      // await sendNotification(data);
+      await sendOtp(Notidata);
+    }
+
     console.log("nonconsulted patient info appoint", patientinfo);
     console.log("nonconsulted patient info ", nonConsultedappointments);
     setNotConsulted(patientinfo);
+    // let Notidata = {
+    //   phoneNo: patientinfo[0].phoneNo,
+    //   name: patientinfo[0].name,
+    //   minutes: "1",
+    // };
+    let Notidata = { phoneNo: patientinfo[0].phoneNo };
+    console.log("notii", Notidata);
+    // console.log("notii", data);
+    // await sendNotification(data);
+    await sendOtp(Notidata);
+    // await sendNotification(Notidata);
     if ($(".clini-infos").css("display") === "none") {
       $(".clini-infos").css("display", "block");
       $(".showHide").text("Hide Patient Details");

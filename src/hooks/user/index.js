@@ -155,3 +155,24 @@ export const useGetBookmark = () => {
 
   return bookmarks;
 };
+
+export const useSendNotification = () => {
+  // const dispatch = useDispatch();
+
+  const sendNotification = async (data) => {
+    try {
+      let user = await axios.post("/api/user/send-noti", data);
+      console.log(user.data);
+      // toast.success("Otp Sent");
+      //   dispatch(setUser(user.data.user));
+      //   dispatch(setToken(user.data.user.jwt));
+      return true;
+    } catch (error) {
+      console.log(error);
+      toast.error("Error Occured");
+      return false;
+    }
+  };
+
+  return sendNotification;
+};
