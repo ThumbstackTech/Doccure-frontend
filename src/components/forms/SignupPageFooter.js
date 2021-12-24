@@ -5,7 +5,7 @@ export const SignupPageFooter = () => {
   return (
     <>
       <footer className="footer">
-        <div className="footer-top">
+        {/* <div className="footer-top">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-3 col-md-6">
@@ -14,7 +14,7 @@ export const SignupPageFooter = () => {
                     <img src="/assets/img/logo.png" alt="logo" />
                   </div>
                   <div className="footer-about-content">
-                    {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> */}
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     <div className="social-icon">
                       <ul>
                         <li>
@@ -117,7 +117,7 @@ export const SignupPageFooter = () => {
                         data-cfemail="3a5e5559594f485f7a5f425b574a565f14595557"
                       >
                         help@doccure.com
-                        {/* [email&nbsp;protected] */}
+                        [email&nbsp;protected]
                       </a>
                     </p>
                   </div>
@@ -125,7 +125,7 @@ export const SignupPageFooter = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="footer-bottom">
           <div className="container-fluid">
             <div className="copyright">
@@ -138,6 +138,9 @@ export const SignupPageFooter = () => {
                 <div className="col-md-6 col-lg-6">
                   <div className="copyright-menu">
                     <ul className="policy-menu">
+                    <li>
+                        <a href="privacy-policy.html">Email: help@doccure.com</a>
+                      </li>
                       <li>
                         <a href="term-condition.html">Terms and Conditions</a>
                       </li>

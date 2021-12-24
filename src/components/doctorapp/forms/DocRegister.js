@@ -75,7 +75,7 @@ export const DocRegister = () => {
                       <div className="login-header">
                         <h3>
                           Doctor Register{" "}
-                          <a href="register.html">Not a Doctor?</a>
+                          {/* <a href="register.html">Not a Doctor?</a> */}
                         </h3>
                       </div>
                       <form action="doctor-dashboard.html">
