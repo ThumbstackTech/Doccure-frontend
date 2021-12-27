@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useBookmarkDoc } from "../../hooks/user";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 // import { setBookmark } from "../../actions/setBookmark";
 // import { useGetBookmark } from "../../hooks/user";
 
@@ -53,12 +54,17 @@ export const DoctorCard = ({ doctor, item, Appointment }) => {
     let userId = onlineUser.userId;
     console.log("bookmarks doctor card ", userId);
     // setUser(userId);
-    setbookmark(bookmark);
-    setAlreadyBookmarked(doctorId);
-    let data = { doctorId, bookmark, userId };
-    console.log("doctor card bookmark data", data);
-    await bookmarkDoc(data);
-    console.log("doctor card bookmarked");
+
+    if (userId) {
+      setbookmark(bookmark);
+      setAlreadyBookmarked(doctorId);
+      let data = { doctorId, bookmark, userId };
+      console.log("doctor card bookmark data", data);
+      await bookmarkDoc(data);
+      console.log("doctor card bookmarked");
+    } else {
+      toast.error("Please Loggin");
+    }
   };
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 
 export const SignupPageFooter = () => {
-  let onlineUser = JSON.parse(localStorage.getItem("user"));
+  // let onlineUser = JSON.parse(localStorage.getItem("user"));
   return (
     <>
       <footer className="footer">
@@ -138,8 +138,10 @@ export const SignupPageFooter = () => {
                 <div className="col-md-6 col-lg-6">
                   <div className="copyright-menu">
                     <ul className="policy-menu">
-                    <li>
-                        <a href="privacy-policy.html">Email: help@doccure.com</a>
+                      <li>
+                        <a href="privacy-policy.html">
+                          Email: help@doccure.com
+                        </a>
                       </li>
                       <li>
                         <a href="term-condition.html">Terms and Conditions</a>

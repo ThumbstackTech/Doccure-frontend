@@ -17,7 +17,7 @@ export const SignupMain = () => {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
-  const [otpcountdown, setotpcountdown] = useState(0);
+  const [otpcountdown, setotpcountdown] = useState(60);
 
   //Countdown
   useEffect(() => {

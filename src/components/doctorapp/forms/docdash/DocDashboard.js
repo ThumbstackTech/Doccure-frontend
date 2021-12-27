@@ -14,7 +14,7 @@ import {
 } from "../../../../hooks/doctor";
 import {
   useUserByAppointmnet,
-  useSendNotification,
+  // useSendNotification,
   useSendOtp,
 } from "../../../../hooks/user";
 // import {  } from "../../hooks/user";
@@ -25,7 +25,7 @@ export const DocDashboard = () => {
   // const navigate = useNavigate();
 
   const doctorById = useDoctorDetails();
-  const sendNotification = useSendNotification();
+  // const sendNotification = useSendNotification();
   const userByAppointment = useUserByAppointmnet();
   const doctorAppointment = useDoctorAppointments();
   // const createAppointment = useCreateAppointments();

@@ -16,18 +16,18 @@ import SignupPageHeader from "../forms/SignupPageHeader";
 import $ from "jquery";
 import { useSendOtp } from "../../hooks/user";
 import { toast } from "react-toastify";
-import { useSendNotification } from "../../hooks/user";
+// import { useSendNotification } from "../../hooks/user";
 
 export const TokenBooking = () => {
   const { appointmentId, doctorId } = useParams();
   const doctorById = useDoctorDetails();
-  const sendNotification = useSendNotification();
+  // const sendNotification = useSendNotification();
   const doctorAppointment = useDoctorAppointments();
   // const consultedAppointment = useConsultedAppointment();
   const fetchAppointment = useFetchAppointment();
   const doctor = useSelector((state) => state.setDoctor);
   // const doctor = useSelector((state) => state.setDoctor);
-  const user = useSelector((state) => state.setUser);
+  // const user = useSelector((state) => state.setUser);
   const appointments = useSelector((state) => state.appointments);
   const consultedappointments = useSelector(
     (state) => state.consultedappointments
@@ -108,7 +108,7 @@ export const TokenBooking = () => {
   let phone = localStorage.getItem("localPhoneNo");
   // let user = localStorage.getItem("user");
   const getOtp = async () => {
-    let name = "Patient";
+    // let name = "Patient";
     let data = { phoneNo: phone };
     // let data = { phoneNo: phone, name: name, minutes: notiSecs };
     console.log("notii", data);
