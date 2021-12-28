@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import DocFooter from "../doctorapp/forms/DocFooter";
-// import TokenHeader from "./TokenHeader";
+
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
@@ -40,9 +39,9 @@ export const TokenBooking = () => {
   //     : appointments.length - 1;
   const createToken = useSelector((state) => state.createToken);
   const [index, setIndex] = useState("");
-  console.log("token appointments", appointments);
-  console.log("fetch token doctor", doctor);
-  console.log("fetch appointmneyt", appointmentId);
+  // console.log("token appointments", appointments);
+  // console.log("fetch token doctor", doctor);
+  // console.log("fetch appointmneyt", appointmentId);
   console.log("createToken", createToken);
   // let current = consultedappointments.length;
 
@@ -76,7 +75,7 @@ export const TokenBooking = () => {
     //   // setuser(onlineUser);
     // }
 
-    console.log("fetch doctor id token", doctorId);
+    // console.log("fetch doctor id token", doctorId);
     // let data = doctorId;
     // let date = Date();
     let today = new Date(),
