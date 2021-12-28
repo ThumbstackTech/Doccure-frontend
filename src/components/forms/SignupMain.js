@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../actions/setUser';
 
 import { setToken } from '../../actions/setToken';
-
+import { toast } from 'react-toastify';
 export const SignupMain = () => {
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ export const SignupMain = () => {
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [showOtp, setShowOtp] = useState(false);
-  const [otpcountdown, setotpcountdown] = useState(0);
+  const [otpcountdown, setotpcountdown] = useState(60);
 
   //Countdown
   useEffect(() => {
@@ -38,47 +38,37 @@ export const SignupMain = () => {
   const getOtp = async () => {
     // event.preventDefault();
     // console.log("phone number", phone);
-    localStorage.setItem('localPhoneNo', phone);
+    if (phone.length === 10) {
+      localStorage.setItem('localPhoneNo', phone);
 
-    let data = { phoneNo: phone };
-    await sendOtp(data);
-    setShowOtp(!showOtp);
-    // axios
-    //   .post("https://doccure-api.herokuapp.com/api/user/send-otp", data)
-    //   .then((response) => {
-    //     console.log(response, "response phone no data...");
-    //     /*   localStorage.setItem('loginUserData', JSON.stringify (response));
-    //     var userData = JSON.parse(localStorage.getItem("loginUserData")); */
-    //     var msgData = response.data.response.response.messages;
-    //     //console.log(userData, 'response local user data...');
-    //     console.log(msgData, "response user id");
-    //     for (var i = 0; i < msgData.length; i++) {
-    //       var userId = msgData[i].id;
-    //       console.log(userId, "userid data");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error!! Something went Wrong..");
-    //     setMessage(true);
-    //   });
+      let data = { phoneNo: phone };
+      await sendOtp(data);
+      setShowOtp(true);
+    } else {
+      toast.error('Invalid PhoneNumber');
+    }
   };
 
   const verifyOtp = async (event) => {
     event.preventDefault();
     console.log('phone number', phone);
     console.log('otp', otp);
-
-    let data = { phoneNo: phone, verifyotp: otp };
-    let res = await verify(data);
-    console.log('verify res', res.success[2]);
-    if (!res.success[2]) {
-      navigate('/registerpage');
+    if (phone && otp) {
+      let data = { phoneNo: phone, verifyotp: otp };
+      let res = await verify(data);
+      console.log('verify res', res.success[2]);
+      if (!res.success[2]) {
+        navigate('/registerpage');
+      } else {
+        dispatch(setUser(res.success[1]));
+        dispatch(setToken(res.success[3]));
+        // navigate("/homepage");
+        navigate(-1);
+      }
     } else {
-      dispatch(setUser(res.success[1]));
-      dispatch(setToken(res.success[3]));
-      // navigate("/homepage");
-      navigate(-1);
+      toast.error('Enter OTP');
     }
+
     // axios
     //   .post("https://doccure-api.herokuapp.com/api/user/verify-otp", postData)
     //   .then((response) => {

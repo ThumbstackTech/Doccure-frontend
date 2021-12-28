@@ -80,12 +80,12 @@ export const Fab = ({ userAllAppointment, item }) => {
         className={"fab " + userAllAppointment.doctor.doctorId}
         onClick={() => {
           getuserAppointments();
-          var el = document.querySelectorAll('.fab');
+          var el = document.querySelectorAll(".fab");
           for (let i = 0; i < el.length; i++) {
-            el[i].onclick = function() {
+            el[i].onclick = function () {
               var c = 0;
               while (c < el.length) {
-                el[c++].classList.remove('activee');
+                el[c++].classList.remove("activee");
                 $(".loadicon").css("display", "block");
               }
             };
@@ -143,7 +143,14 @@ export const Fab = ({ userAllAppointment, item }) => {
               Current Patient Token No.
             </h6>
             <div className="dash-widget-count">
-              <h3>{consultedappointments && consultedappointments.length}</h3>
+              {left > 0 ? (
+                <h3>
+                  {consultedappointments && consultedappointments.length + 1}
+                </h3>
+              ) : (
+                <h3>0</h3>
+              )}
+              {/* <h3>{consultedappointments && consultedappointments.length}</h3> */}
             </div>
           </div>
           <div className="dash-widget-info">
